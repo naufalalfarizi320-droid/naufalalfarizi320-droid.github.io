@@ -35,7 +35,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== BACKGROUND ANIMATION ===== */
+/* ===== BACKGROUND ANIMATION (FINAL) ===== */
 .bg-animation{
   position:fixed;
   inset:0;
@@ -47,43 +47,47 @@ body{
   position:absolute;
   background:rgba(255,255,255,0.08);
   border-radius:40px;
+  filter:blur(6px);
 }
 
 /* Horizontal bars */
 .bar.h1{
-  width:120%;
-  height:140px;
-  top:15%;
-  animation: moveH 35s linear infinite;
+  width:130%;
+  height:160px;
+  top:18%;
+  animation: moveH 38s ease-in-out infinite;
 }
 .bar.h2{
-  width:120%;
-  height:90px;
-  top:55%;
-  animation: moveH 50s linear infinite reverse;
+  width:130%;
+  height:100px;
+  top:60%;
+  animation: moveH 52s ease-in-out infinite reverse;
 }
 
 /* Vertical bars */
 .bar.v1{
-  width:120px;
-  height:120%;
-  left:10%;
-  animation: moveV 45s linear infinite;
+  width:140px;
+  height:130%;
+  left:12%;
+  animation: moveV 46s ease-in-out infinite;
 }
 .bar.v2{
-  width:80px;
-  height:120%;
-  left:75%;
-  animation: moveV 60s linear infinite reverse;
+  width:90px;
+  height:130%;
+  left:78%;
+  animation: moveV 60s ease-in-out infinite reverse;
 }
 
+/* Cinematic motion */
 @keyframes moveH{
-  from{transform:translateX(-20%);}
-  to{transform:translateX(20%);}
+  0%{transform:translateX(-35%) scale(1);}
+  50%{transform:translateX(0%) scale(1.06);}
+  100%{transform:translateX(35%) scale(1);}
 }
 @keyframes moveV{
-  from{transform:translateY(-20%);}
-  to{transform:translateY(20%);}
+  0%{transform:translateY(-35%) scale(1);}
+  50%{transform:translateY(0%) scale(1.08);}
+  100%{transform:translateY(35%) scale(1);}
 }
 
 /* ===== NAV ===== */
@@ -159,7 +163,7 @@ section h2{
   border-radius:18px;
 }
 
-/* ===== KARYA AUTO SCROLL ===== */
+/* ===== KARYA AUTO SCROLL (PORTRAIT FINAL) ===== */
 .karya-wrapper{
   overflow:hidden;
 }
@@ -168,12 +172,12 @@ section h2{
   display:flex;
   gap:40px;
   width:max-content;
-  animation: scroll 45s linear infinite;
+  animation: scroll 35s linear infinite;
 }
 
 .karya-track img{
-  width:380px;
-  height:240px;
+  width:260px;
+  height:420px;
   border-radius:24px;
   object-fit:cover;
   box-shadow:0 20px 60px rgba(0,0,0,.4);
@@ -212,8 +216,8 @@ footer{
   nav a{display:none;}
   .hero h1{font-size:42px;}
   .karya-track img{
-    width:260px;
-    height:180px;
+    width:220px;
+    height:360px;
   }
 }
 </style>
@@ -271,7 +275,7 @@ footer{
       <img src="https://i.ibb.co.com/HftzZ0qG/1001967590-1000.jpg">
       <img src="https://i.ibb.co.com/svh3GTkq/1001966742-1000.jpg">
       <img src="https://i.ibb.co.com/ksmN9VNY/IMG-20260110-WA0065.jpg">
-     <img src="https://i.ibb.co.com/1GBTXLTN/IMG-20260110-WA0066.jpg">
+      <img src="https://i.ibb.co.com/1GBTXLTN/IMG-20260110-WA0066.jpg">
     </div>
   </div>
 </section>
