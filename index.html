@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AMD Design — Sports Graphic Designer</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:'Inter', sans-serif;
 }
 
 body{
-  background:#fff;
-  color:#111;
+  font-family:'Inter', sans-serif;
+  color:#fff;
+  background:linear-gradient(135deg,#949398,#004146);
   overflow-x:hidden;
 }
 
@@ -26,79 +26,109 @@ nav{
   position:fixed;
   top:0;
   width:100%;
-  padding:22px 40px;
+  padding:22px 48px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  z-index:100;
-  background:rgba(255,255,255,0.85);
-  backdrop-filter: blur(10px);
+  z-index:1000;
+  background:rgba(0,0,0,0.15);
+  backdrop-filter: blur(14px);
 }
 
 .brand{
   font-size:14px;
-  font-weight:500;
+  letter-spacing:2px;
+  text-transform:uppercase;
 }
 
 .menu a{
-  margin-left:26px;
+  margin-left:28px;
   font-size:12px;
   text-decoration:none;
-  color:#111;
+  color:#fff;
+  opacity:.75;
   letter-spacing:1px;
-  text-transform:uppercase;
-  opacity:.7;
 }
 .menu a:hover{opacity:1}
+
+/* ===== FLOAT NAV ===== */
+.float-nav{
+  position:fixed;
+  right:30px;
+  bottom:30px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  z-index:999;
+}
+
+.float-nav a{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  text-decoration:none;
+  font-size:12px;
+  opacity:.8;
+}
+.float-nav a:hover{opacity:1}
 
 /* ===== HERO ===== */
 .hero{
   min-height:100vh;
-  padding:140px 40px 60px;
+  padding:160px 48px 80px;
 }
 
 .hero h1{
-  font-size:64px;
+  font-family:'Playfair Display', serif;
+  font-size:72px;
   font-weight:400;
-  line-height:1.1;
+  line-height:1.05;
   max-width:900px;
 }
 
 .hero p{
-  margin-top:24px;
+  margin-top:28px;
   font-size:18px;
   max-width:520px;
-  color:#555;
+  color:#e0e0e0;
 }
 
 /* ===== SECTION ===== */
 section{
-  padding:120px 40px;
+  padding:140px 48px;
 }
 
 section h2{
-  font-size:32px;
+  font-family:'Playfair Display', serif;
+  font-size:36px;
   font-weight:400;
-  margin-bottom:40px;
+  margin-bottom:48px;
 }
 
-/* ===== KARYA ANIMASI ===== */
+/* ===== KARYA ===== */
 .karya-wrapper{
   overflow:hidden;
 }
 
 .karya-track{
   display:flex;
-  gap:28px;
+  gap:48px;
   width:max-content;
-  animation: scroll 35s linear infinite;
+  animation: scroll 40s linear infinite;
 }
 
 .karya-track img{
-  width:320px;
-  height:220px;
+  width:420px;
+  height:280px;
   object-fit:cover;
-  border-radius:14px;
+  border-radius:24px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
 }
 
 @keyframes scroll{
@@ -108,75 +138,66 @@ section h2{
 
 /* ===== ABOUT ===== */
 .about{
-  max-width:820px;
+  max-width:900px;
 }
 
 .about p{
   font-size:17px;
-  line-height:1.7;
-  color:#444;
+  line-height:1.8;
+  color:#e8e8e8;
   margin-bottom:18px;
 }
 
-/* ===== SERVICES ===== */
+/* ===== PRICE ===== */
 .services{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:32px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:40px;
 }
 
 .service-box{
-  border:1px solid #eee;
-  padding:32px;
-  border-radius:16px;
+  padding:40px;
+  border-radius:24px;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
 }
 
 .service-box h3{
-  font-size:18px;
-  font-weight:500;
-  margin-bottom:12px;
+  font-family:'Playfair Display', serif;
+  font-size:22px;
+  margin-bottom:14px;
 }
 
 .service-box p{
-  font-size:15px;
-  color:#555;
-}
-
-/* ===== STATS ===== */
-.stats{
-  display:flex;
-  gap:60px;
-  margin-top:20px;
-}
-
-.stats div{
-  font-size:14px;
-  color:#444;
+  font-size:16px;
+  color:#e5e5e5;
 }
 
 /* ===== CONTACT ===== */
 .contact p{
-  font-size:16px;
-  color:#444;
-  margin-bottom:10px;
+  font-size:17px;
+  margin-bottom:12px;
+  color:#eaeaea;
 }
 
 /* ===== FOOTER ===== */
 footer{
-  padding:80px 40px;
-  border-top:1px solid #eee;
+  padding:100px 48px;
+  border-top:1px solid rgba(255,255,255,.2);
   display:flex;
   justify-content:space-between;
   font-size:13px;
+  color:#ddd;
 }
 
 /* ===== MOBILE ===== */
 @media(max-width:768px){
-  nav .menu{display:none;}
-  .hero h1{font-size:38px;}
+  .menu{display:none;}
+  .hero h1{font-size:42px;}
   .karya-track img{
-    width:240px;
-    height:170px;
+    width:280px;
+    height:190px;
+    border-radius:18px;
   }
 }
 </style>
@@ -184,30 +205,32 @@ footer{
 
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="brand">AMD DESIGN</div>
   <div class="menu">
     <a href="#work">Work</a>
     <a href="#about">About</a>
-    <a href="#services">Price</a>
+    <a href="#price">Price</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- FLOAT NAV -->
+<div class="float-nav">
+  <a href="#work">W</a>
+  <a href="#about">A</a>
+  <a href="#price">P</a>
+  <a href="#contact">C</a>
+</div>
+
 <section class="hero">
-  <h1>
-    Aiman — Sports<br>
-    Graphic Designer
-  </h1>
+  <h1>Aiman — Sports<br>Graphic Designer</h1>
   <p>
-    Creating clean, modern, and impactful football visuals for
-    players, academies, and sports projects worldwide.
+    Specializing in matchday graphics, social media visuals,
+    and football branding for players & clubs worldwide.
   </p>
 </section>
 
-<!-- WORK -->
 <section id="work">
   <h2>Karya</h2>
   <div class="karya-wrapper">
@@ -216,67 +239,42 @@ footer{
       <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
       <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
       <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
-      <!-- duplicate -->
       <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
       <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
-      <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
-      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about" class="about">
   <h2>About</h2>
-  <p><strong>Nama Lengkap / Company:</strong> Aiman Maulidhan Maulidhan / Designer Graphic</p>
-  <p><strong>Asal:</strong> Jambi, Indonesia</p>
-
+  <p><strong>Aiman Maulidhan Maulidhan</strong> — Sports Graphic Designer</p>
+  <p>📍 Jambi, Indonesia | Working Worldwide</p>
   <p>
-    I am a sports graphic designer specializing in matchday graphics,
-    social media content, and player visuals.
-  </p>
-
-  <p>
-    I work with players, academies, and football projects to create clean,
-    modern, and impactful designs that strengthen visual identity and brand presence.
-  </p>
-
-  <p>
-    Focused on consistency, clarity, and fast-paced workflows.
+    Focused on clean, modern, and impactful football visuals.
     Available for freelance and long-term collaborations.
   </p>
-
-  <p>📍 Indonesia | Working Worldwide<br>
-     📩 Open for Work
-  </p>
-
-  <div class="stats">
-    <div><strong>100+</strong><br>Total Clients</div>
-    <div><strong>Football</strong><br>Main Focus</div>
-  </div>
+  <p>100+ freelance clients · Open for work</p>
 </section>
 
-<!-- SERVICES -->
-<section id="services">
+<section id="price">
   <h2>Price</h2>
   <div class="services">
     <div class="service-box">
       <h3>Matchday Design</h3>
-      <p>$5 per design<br>Perfect for game announcements & fixtures.</p>
+      <p>$5 per design</p>
     </div>
     <div class="service-box">
       <h3>Feed / Social Media</h3>
-      <p>$3 per design<br>Clean visuals for Instagram & social platforms.</p>
+      <p>$3 per design</p>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="contact">
   <h2>Contact</h2>
   <p>📞 +62 819 3278 7003</p>
-  <p>📸 Instagram: <strong>@amddesignn_</strong></p>
-  <p>Available for freelance & long-term collaboration.</p>
+  <p>📸 Instagram: @amddesignn_</p>
+  <p>📩 Open for Work</p>
 </section>
 
 <footer>
