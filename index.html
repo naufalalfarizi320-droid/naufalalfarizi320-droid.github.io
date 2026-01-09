@@ -56,6 +56,43 @@ nav a{
   letter-spacing:-2px;
 }
 
+/* ===== IMAGE MARQUEE ===== */
+.marquee{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  padding:80px 0;
+  background:#fff;
+}
+
+.marquee-track{
+  display:flex;
+  gap:40px;
+  width:max-content;
+  animation: scroll 35s linear infinite;
+}
+
+.marquee img{
+  width:420px;
+  height:520px;
+  object-fit:cover;
+  border-radius:12px;
+  transition:transform .4s ease;
+}
+
+.marquee img:hover{
+  transform:scale(1.05);
+}
+
+@keyframes scroll{
+  from{
+    transform:translateX(0);
+  }
+  to{
+    transform:translateX(-50%);
+  }
+}
+
 /* GRID */
 .projects{
   padding:120px 40px;
@@ -139,6 +176,10 @@ footer a{
 @media(max-width:768px){
   .hero h1{font-size:42px;}
   .card img{height:350px;}
+  .marquee img{
+    width:280px;
+    height:360px;
+  }
 }
 </style>
 </head>
@@ -156,6 +197,27 @@ footer a{
 
 <section class="hero">
   <h1>Visual Designer<br>Creative Direction</h1>
+</section>
+
+<!-- ===== RUNNING IMAGES ===== -->
+<section class="marquee">
+  <div class="marquee-track">
+    <!-- DUPLIKASI GAMBAR BIAR LOOP HALUS -->
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+    <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
+    <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f">
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+
+    <!-- CLONE -->
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+    <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
+    <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f">
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+  </div>
 </section>
 
 <section id="work" class="projects">
@@ -182,8 +244,8 @@ footer a{
 <section id="about" class="about">
   <h2>About</h2>
   <p>
-    I’m a visual designer focused on clean aesthetics, storytelling, and
-    minimal digital experiences.
+    I’m a visual designer focused on clean aesthetics, storytelling,
+    and minimal digital experiences inspired by modern portfolio layouts.
   </p>
 </section>
 
