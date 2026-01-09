@@ -17,7 +17,7 @@
 
 body{
   background:#fff;
-  overflow-x:hidden;
+  overflow:hidden;
 }
 
 /* HERO */
@@ -35,40 +35,61 @@ body{
   letter-spacing:-2px;
 }
 
-/* ===== 3 LAYER VERTICAL ===== */
-.vertical-wrapper{
-  height:200vh;
+/* ===== CORE GALLERY ===== */
+.gallery-wrapper{
+  position:relative;
+  height:100vh;
   overflow:hidden;
   padding:0 40px;
 }
 
-.vertical-gallery{
+.gallery{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:40px;
-  height:100vh;
+  height:200vh;
 }
 
 /* COLUMN */
-.layer{
+.column{
   display:flex;
   flex-direction:column;
   gap:40px;
-  will-change:transform;
 }
 
-.layer img{
+.column img{
   width:100%;
   height:520px;
   object-fit:cover;
   border-radius:14px;
 }
 
+/* ANIMATIONS */
+.move-down{
+  animation: down 35s linear infinite;
+}
+
+.move-up{
+  animation: up 35s linear infinite;
+}
+
+@keyframes down{
+  from{ transform:translateY(0); }
+  to{ transform:translateY(-50%); }
+}
+
+@keyframes up{
+  from{ transform:translateY(-50%); }
+  to{ transform:translateY(0); }
+}
+
 /* RESPONSIVE */
 @media(max-width:900px){
-  .vertical-gallery{
+  .gallery{
     grid-template-columns:1fr;
+    height:auto;
   }
+  body{overflow:auto;}
 }
 </style>
 </head>
@@ -79,28 +100,27 @@ body{
   <h1>Visual Designer<br>Creative Direction</h1>
 </section>
 
-<!-- ===== VERTICAL 3 LAYER ===== -->
-<section class="vertical-wrapper">
-  <div class="vertical-gallery">
+<section class="gallery-wrapper">
+  <div class="gallery">
 
-    <!-- KIRI – KE BAWAH -->
-    <div class="layer" data-speed="0.5">
+    <!-- LEFT (DOWN) -->
+    <div class="column move-down">
       <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
       <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
       <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
       <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
     </div>
 
-    <!-- TENGAH – KE ATAS -->
-    <div class="layer" data-speed="-0.7">
+    <!-- CENTER (UP) -->
+    <div class="column move-up">
       <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
       <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
       <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
       <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
     </div>
 
-    <!-- KANAN – KE BAWAH -->
-    <div class="layer" data-speed="0.5">
+    <!-- RIGHT (DOWN) -->
+    <div class="column move-down">
       <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58">
       <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f">
       <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
@@ -109,19 +129,6 @@ body{
 
   </div>
 </section>
-
-<script>
-const layers = document.querySelectorAll('.layer');
-
-window.addEventListener('scroll', () => {
-  const scroll = window.scrollY;
-
-  layers.forEach(layer => {
-    const speed = layer.dataset.speed;
-    layer.style.transform = `translateY(${scroll * speed}px)`;
-  });
-});
-</script>
 
 </body>
 </html>
