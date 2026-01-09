@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio — Creative Designer</title>
+<title>AMD Design — Sports Graphic Designer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -35,27 +35,26 @@ nav{
   backdrop-filter: blur(10px);
 }
 
-nav .brand{
+.brand{
   font-size:14px;
   font-weight:500;
 }
 
-nav .menu a{
-  margin-left:28px;
-  font-size:13px;
+.menu a{
+  margin-left:26px;
+  font-size:12px;
   text-decoration:none;
   color:#111;
+  letter-spacing:1px;
+  text-transform:uppercase;
   opacity:.7;
 }
-nav .menu a:hover{opacity:1}
+.menu a:hover{opacity:1}
 
 /* ===== HERO ===== */
 .hero{
-  height:100vh;
+  min-height:100vh;
   padding:140px 40px 60px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
 }
 
 .hero h1{
@@ -90,19 +89,18 @@ section h2{
 
 .karya-track{
   display:flex;
-  gap:32px;
+  gap:28px;
   width:max-content;
-  animation: scroll 40s linear infinite;
+  animation: scroll 35s linear infinite;
 }
 
 .karya-track img{
-  width:360px;
-  height:240px;
+  width:320px;
+  height:220px;
   object-fit:cover;
   border-radius:14px;
 }
 
-/* infinite animation */
 @keyframes scroll{
   from{transform:translateX(0);}
   to{transform:translateX(-50%);}
@@ -110,13 +108,57 @@ section h2{
 
 /* ===== ABOUT ===== */
 .about{
-  max-width:700px;
+  max-width:820px;
 }
 
 .about p{
   font-size:17px;
   line-height:1.7;
   color:#444;
+  margin-bottom:18px;
+}
+
+/* ===== SERVICES ===== */
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:32px;
+}
+
+.service-box{
+  border:1px solid #eee;
+  padding:32px;
+  border-radius:16px;
+}
+
+.service-box h3{
+  font-size:18px;
+  font-weight:500;
+  margin-bottom:12px;
+}
+
+.service-box p{
+  font-size:15px;
+  color:#555;
+}
+
+/* ===== STATS ===== */
+.stats{
+  display:flex;
+  gap:60px;
+  margin-top:20px;
+}
+
+.stats div{
+  font-size:14px;
+  color:#444;
+}
+
+/* ===== CONTACT ===== */
+.contact p{
+  font-size:16px;
+  color:#444;
+  margin-bottom:10px;
 }
 
 /* ===== FOOTER ===== */
@@ -130,50 +172,51 @@ footer{
 
 /* ===== MOBILE ===== */
 @media(max-width:768px){
-  .hero h1{font-size:40px;}
-  .karya-track img{
-    width:260px;
-    height:180px;
-  }
   nav .menu{display:none;}
+  .hero h1{font-size:38px;}
+  .karya-track img{
+    width:240px;
+    height:170px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
-  <div class="brand">Your Name</div>
+  <div class="brand">AMD DESIGN</div>
   <div class="menu">
-    <a href="#karya">Karya</a>
-    <a href="#about">Tentang</a>
-    <a href="#contact">Kontak</a>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#services">Price</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <h1>
-    Desainer Visual &<br>
-    Creative Developer
+    Aiman — Sports<br>
+    Graphic Designer
   </h1>
   <p>
-    Fokus pada desain bersih, pengalaman visual, dan website modern
-    dengan animasi yang halus.
+    Creating clean, modern, and impactful football visuals for
+    players, academies, and sports projects worldwide.
   </p>
 </section>
 
-<section id="karya">
+<!-- WORK -->
+<section id="work">
   <h2>Karya</h2>
-
   <div class="karya-wrapper">
     <div class="karya-track">
-      <!-- SET 1 -->
       <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
       <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
       <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
       <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
-
-      <!-- DUPLIKASI (BIAR LOOP HALUS) -->
+      <!-- duplicate -->
       <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
       <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
       <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
@@ -182,18 +225,63 @@ footer{
   </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about" class="about">
-  <h2>Tentang Saya</h2>
+  <h2>About</h2>
+  <p><strong>Nama Lengkap / Company:</strong> Aiman Maulidhan Maulidhan / Designer Graphic</p>
+  <p><strong>Asal:</strong> Jambi, Indonesia</p>
+
   <p>
-    Saya adalah desainer yang berfokus pada tampilan modern,
-    tipografi bersih, dan animasi yang memberikan kesan profesional
-    serta elegan pada setiap proyek.
+    I am a sports graphic designer specializing in matchday graphics,
+    social media content, and player visuals.
   </p>
+
+  <p>
+    I work with players, academies, and football projects to create clean,
+    modern, and impactful designs that strengthen visual identity and brand presence.
+  </p>
+
+  <p>
+    Focused on consistency, clarity, and fast-paced workflows.
+    Available for freelance and long-term collaborations.
+  </p>
+
+  <p>📍 Indonesia | Working Worldwide<br>
+     📩 Open for Work
+  </p>
+
+  <div class="stats">
+    <div><strong>100+</strong><br>Total Clients</div>
+    <div><strong>Football</strong><br>Main Focus</div>
+  </div>
 </section>
 
-<footer id="contact">
-  <div>© 2026 Your Name</div>
-  <div>Instagram · WhatsApp · Email</div>
+<!-- SERVICES -->
+<section id="services">
+  <h2>Price</h2>
+  <div class="services">
+    <div class="service-box">
+      <h3>Matchday Design</h3>
+      <p>$5 per design<br>Perfect for game announcements & fixtures.</p>
+    </div>
+    <div class="service-box">
+      <h3>Feed / Social Media</h3>
+      <p>$3 per design<br>Clean visuals for Instagram & social platforms.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <p>📞 +62 819 3278 7003</p>
+  <p>📸 Instagram: <strong>@amddesignn_</strong></p>
+  <p>Available for freelance & long-term collaboration.</p>
+</section>
+
+<footer>
+  <div>© 2026 AMD Design</div>
+  <div>Sports Graphic Designer</div>
 </footer>
 
 </body>
