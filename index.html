@@ -20,6 +20,37 @@ body{
   color:#000;
 }
 
+/* ===== NAVBAR ===== */
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:24px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  pointer-events:auto;
+}
+
+nav .logo{
+  font-size:14px;
+  font-weight:400;
+}
+
+nav .menu a{
+  font-size:13px;
+  text-decoration:none;
+  color:#000;
+  margin-left:28px;
+  opacity:.8;
+}
+
+nav .menu a:hover{
+  opacity:1;
+}
+
 /* HERO */
 .hero{
   height:100vh;
@@ -67,6 +98,24 @@ body{
   border-radius:14px;
 }
 
+/* SECTIONS */
+.section{
+  padding:160px 40px;
+  max-width:900px;
+}
+
+.section h2{
+  font-size:32px;
+  font-weight:400;
+  margin-bottom:24px;
+}
+
+.section p{
+  font-size:16px;
+  line-height:1.7;
+  color:#444;
+}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .parallax-gallery{
@@ -78,11 +127,22 @@ body{
 
 <body>
 
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="logo">YOUR NAME</div>
+  <div class="menu">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
 <section class="hero">
   <h1>Visual Designer<br>Creative Direction</h1>
 </section>
 
-<section class="parallax-section" id="parallax">
+<!-- ===== PARALLAX ===== -->
+<section class="parallax-section" id="work">
   <div class="parallax-gallery">
 
     <!-- LEFT -->
@@ -90,15 +150,13 @@ body{
       <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
       <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
       <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
-      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
     </div>
 
-    <!-- CENTER (OPPOSITE) -->
+    <!-- CENTER -->
     <div class="column" data-speed="-0.55">
       <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
       <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
       <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
-      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
     </div>
 
     <!-- RIGHT -->
@@ -106,27 +164,40 @@ body{
       <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58">
       <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f">
       <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
-      <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58">
     </div>
 
   </div>
 </section>
 
-<script>
-/* ===== SMOOTH SCROLL INERTIA ENGINE ===== */
+<section id="about" class="section">
+  <h2>About</h2>
+  <p>
+    I’m a visual designer focused on editorial layouts, subtle motion,
+    and premium digital experiences inspired by contemporary portfolios.
+  </p>
+</section>
 
+<section id="contact" class="section">
+  <h2>Contact</h2>
+  <p>
+    Instagram · Behance · Email
+  </p>
+</section>
+
+<script>
+/* ===== SMOOTH SCROLL INERTIA ===== */
 let currentScroll = window.scrollY;
 let targetScroll = window.scrollY;
 const ease = 0.08;
 
-const section = document.getElementById('parallax');
+const section = document.querySelector('.parallax-section');
 const columns = document.querySelectorAll('.column');
 
 window.addEventListener('scroll', () => {
   targetScroll = window.scrollY;
 });
 
-function animate(){
+function raf(){
   currentScroll += (targetScroll - currentScroll) * ease;
 
   const rect = section.getBoundingClientRect();
@@ -140,10 +211,9 @@ function animate(){
     col.style.transform = `translateY(${progress * 400 * speed}px)`;
   });
 
-  requestAnimationFrame(animate);
+  requestAnimationFrame(raf);
 }
-
-animate();
+raf();
 </script>
 
 </body>
