@@ -5,7 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AMD Design — Sports Graphic Designer</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<!-- ===== CUSTOM FONTS ===== -->
+<style>
+@font-face{
+  font-family:'Noir';
+  src:url('fonts/noir.ttf') format('truetype');
+}
+@font-face{
+  font-family:'Gendy';
+  src:url('fonts/gendy.ttf') format('truetype');
+}
+@font-face{
+  font-family:'Android';
+  src:url('fonts/android.ttf') format('truetype');
+}
+</style>
 
 <style>
 *{
@@ -15,9 +29,9 @@
 }
 
 body{
-  font-family:'Inter', sans-serif;
-  color:#fff;
+  font-family:'Gendy', sans-serif; /* INFORMATION */
   background:linear-gradient(135deg,#949398,#004146);
+  color:#fff;
   overflow-x:hidden;
 }
 
@@ -30,53 +44,25 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  z-index:1000;
-  background:rgba(0,0,0,0.15);
+  background:rgba(0,0,0,0.2);
   backdrop-filter: blur(14px);
+  z-index:1000;
 }
 
 .brand{
-  font-size:14px;
+  font-family:'Android', sans-serif; /* NAME */
+  font-size:15px;
   letter-spacing:2px;
-  text-transform:uppercase;
 }
 
 .menu a{
+  font-size:12px;
   margin-left:28px;
-  font-size:12px;
   text-decoration:none;
   color:#fff;
-  opacity:.75;
-  letter-spacing:1px;
-}
-.menu a:hover{opacity:1}
-
-/* ===== FLOAT NAV ===== */
-.float-nav{
-  position:fixed;
-  right:30px;
-  bottom:30px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  z-index:999;
-}
-
-.float-nav a{
-  width:46px;
-  height:46px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  text-decoration:none;
-  font-size:12px;
   opacity:.8;
 }
-.float-nav a:hover{opacity:1}
+.menu a:hover{opacity:1}
 
 /* ===== HERO ===== */
 .hero{
@@ -85,7 +71,7 @@ nav{
 }
 
 .hero h1{
-  font-family:'Playfair Display', serif;
+  font-family:'Noir', serif; /* TITLE */
   font-size:72px;
   font-weight:400;
   line-height:1.05;
@@ -96,7 +82,7 @@ nav{
   margin-top:28px;
   font-size:18px;
   max-width:520px;
-  color:#e0e0e0;
+  opacity:.85;
 }
 
 /* ===== SECTION ===== */
@@ -105,10 +91,35 @@ section{
 }
 
 section h2{
-  font-family:'Playfair Display', serif;
+  font-family:'Noir', serif;
   font-size:36px;
   font-weight:400;
   margin-bottom:48px;
+}
+
+/* ===== CLIENT TRUST ===== */
+.trust{
+  margin-bottom:120px;
+}
+
+.trust h3{
+  font-family:'Noir', serif;
+  font-size:28px;
+  margin-bottom:36px;
+}
+
+.trust-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:28px;
+}
+
+.trust-grid img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  border-radius:16px;
+  opacity:.9;
 }
 
 /* ===== KARYA ===== */
@@ -137,15 +148,11 @@ section h2{
 }
 
 /* ===== ABOUT ===== */
-.about{
-  max-width:900px;
-}
-
 .about p{
   font-size:17px;
   line-height:1.8;
-  color:#e8e8e8;
   margin-bottom:18px;
+  opacity:.9;
 }
 
 /* ===== PRICE ===== */
@@ -158,26 +165,14 @@ section h2{
 .service-box{
   padding:40px;
   border-radius:24px;
-  background:rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.15);
   backdrop-filter: blur(12px);
 }
 
 .service-box h3{
-  font-family:'Playfair Display', serif;
+  font-family:'Noir', serif;
   font-size:22px;
   margin-bottom:14px;
-}
-
-.service-box p{
-  font-size:16px;
-  color:#e5e5e5;
-}
-
-/* ===== CONTACT ===== */
-.contact p{
-  font-size:17px;
-  margin-bottom:12px;
-  color:#eaeaea;
 }
 
 /* ===== FOOTER ===== */
@@ -187,7 +182,7 @@ footer{
   display:flex;
   justify-content:space-between;
   font-size:13px;
-  color:#ddd;
+  opacity:.85;
 }
 
 /* ===== MOBILE ===== */
@@ -197,7 +192,6 @@ footer{
   .karya-track img{
     width:280px;
     height:190px;
-    border-radius:18px;
   }
 }
 </style>
@@ -215,20 +209,29 @@ footer{
   </div>
 </nav>
 
-<!-- FLOAT NAV -->
-<div class="float-nav">
-  <a href="#work">W</a>
-  <a href="#about">A</a>
-  <a href="#price">P</a>
-  <a href="#contact">C</a>
-</div>
-
 <section class="hero">
   <h1>Aiman — Sports<br>Graphic Designer</h1>
   <p>
-    Specializing in matchday graphics, social media visuals,
-    and football branding for players & clubs worldwide.
+    Clean, modern, and impactful football visuals
+    for players, academies, and clubs worldwide.
   </p>
+</section>
+
+<!-- CLIENT TRUST -->
+<section class="trust">
+  <h3>Yang Pernah Mempercayai Saya</h3>
+  <div class="trust-grid">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+    <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
+    <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58">
+    <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f">
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+  </div>
 </section>
 
 <section id="work">
@@ -240,7 +243,6 @@ footer{
       <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
       <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
       <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
-      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
     </div>
   </div>
 </section>
@@ -249,10 +251,6 @@ footer{
   <h2>About</h2>
   <p><strong>Aiman Maulidhan Maulidhan</strong> — Sports Graphic Designer</p>
   <p>📍 Jambi, Indonesia | Working Worldwide</p>
-  <p>
-    Focused on clean, modern, and impactful football visuals.
-    Available for freelance and long-term collaborations.
-  </p>
   <p>100+ freelance clients · Open for work</p>
 </section>
 
@@ -270,11 +268,10 @@ footer{
   </div>
 </section>
 
-<section id="contact" class="contact">
+<section id="contact">
   <h2>Contact</h2>
   <p>📞 +62 819 3278 7003</p>
   <p>📸 Instagram: @amddesignn_</p>
-  <p>📩 Open for Work</p>
 </section>
 
 <footer>
