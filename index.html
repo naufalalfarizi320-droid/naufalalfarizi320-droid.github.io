@@ -30,8 +30,8 @@ nav{
   display:flex;
   justify-content:space-between;
   z-index:100;
-  background:rgba(255,255,255,0.8);
-  backdrop-filter: blur(10px);
+  background:rgba(255,255,255,0.75);
+  backdrop-filter: blur(12px);
 }
 
 nav a{
@@ -51,93 +51,54 @@ nav a{
 }
 
 .hero h1{
-  font-size:64px;
+  font-size:72px;
   font-weight:400;
   letter-spacing:-2px;
 }
 
-/* ===== IMAGE MARQUEE ===== */
-.marquee{
-  position:relative;
-  width:100%;
+/* ===== VERTICAL SCROLL GALLERY ===== */
+.gallery-wrapper{
+  height:160vh;
   overflow:hidden;
-  padding:80px 0;
-  background:#fff;
+  padding:120px 40px;
 }
 
-.marquee-track{
-  display:flex;
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
   gap:40px;
-  width:max-content;
-  animation: scroll 35s linear infinite;
 }
 
-.marquee img{
-  width:420px;
+.column{
+  display:flex;
+  flex-direction:column;
+  gap:40px;
+  will-change:transform;
+}
+
+.column img{
+  width:100%;
   height:520px;
   object-fit:cover;
-  border-radius:12px;
-  transition:transform .4s ease;
+  border-radius:16px;
 }
 
-.marquee img:hover{
-  transform:scale(1.05);
-}
-
-@keyframes scroll{
-  from{
-    transform:translateX(0);
-  }
-  to{
-    transform:translateX(-50%);
-  }
-}
-
-/* GRID */
+/* WORK GRID */
 .projects{
   padding:120px 40px;
 }
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
   gap:40px;
-}
-
-.card{
-  position:relative;
-  overflow:hidden;
 }
 
 .card img{
   width:100%;
   height:500px;
   object-fit:cover;
-  transition:transform .6s ease;
-}
-
-.card:hover img{
-  transform:scale(1.05);
-}
-
-.overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.4);
-  display:flex;
-  align-items:flex-end;
-  opacity:0;
-  transition:.4s;
-}
-
-.card:hover .overlay{
-  opacity:1;
-}
-
-.overlay h3{
-  color:#fff;
-  padding:20px;
-  font-weight:400;
+  border-radius:16px;
 }
 
 /* ABOUT */
@@ -166,19 +127,10 @@ footer{
   font-size:14px;
 }
 
-footer a{
-  text-decoration:none;
-  color:#000;
-  margin-left:20px;
-}
-
 /* RESPONSIVE */
-@media(max-width:768px){
-  .hero h1{font-size:42px;}
-  .card img{height:350px;}
-  .marquee img{
-    width:280px;
-    height:360px;
+@media(max-width:900px){
+  .gallery{
+    grid-template-columns:1fr;
   }
 }
 </style>
@@ -199,53 +151,48 @@ footer a{
   <h1>Visual Designer<br>Creative Direction</h1>
 </section>
 
-<!-- ===== RUNNING IMAGES ===== -->
-<section class="marquee">
-  <div class="marquee-track">
-    <!-- DUPLIKASI GAMBAR BIAR LOOP HALUS -->
-    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
-    <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
-    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
-    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
-    <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f">
-    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+<!-- ===== VERTICAL MOVING IMAGES ===== -->
+<section class="gallery-wrapper">
+  <div class="gallery">
 
-    <!-- CLONE -->
-    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
-    <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
-    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
-    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
-    <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f">
-    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+    <div class="column" data-speed="0.6">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+      <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
+      <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+    </div>
+
+    <div class="column" data-speed="-0.4">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+    </div>
+
+    <div class="column" data-speed="0.8">
+      <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58">
+      <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+      <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58">
+    </div>
+
   </div>
 </section>
 
 <section id="work" class="projects">
   <div class="grid">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
-      <div class="overlay"><h3>Project One</h3></div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
-      <div class="overlay"><h3>Project Two</h3></div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
-      <div class="overlay"><h3>Project Three</h3></div>
-    </div>
-
+    <div class="card"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"></div>
+    <div class="card"><img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa"></div>
   </div>
 </section>
 
 <section id="about" class="about">
   <h2>About</h2>
   <p>
-    I’m a visual designer focused on clean aesthetics, storytelling,
-    and minimal digital experiences inspired by modern portfolio layouts.
+    I’m a visual designer focused on editorial layouts, motion-based
+    interactions, and modern portfolio experiences inspired by high-end
+    creative websites.
   </p>
 </section>
 
@@ -257,6 +204,19 @@ footer a{
     <a href="#">Email</a>
   </div>
 </footer>
+
+<script>
+const columns = document.querySelectorAll('.column');
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+
+  columns.forEach(col => {
+    const speed = col.dataset.speed;
+    col.style.transform = `translateY(${scrollY * speed}px)`;
+  });
+});
+</script>
 
 </body>
 </html>
