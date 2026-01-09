@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AMD Design — Sports Graphic Designer</title>
+<title>AMD Design</title>
 
-<!-- ===== CUSTOM FONTS ===== -->
+<!-- ===== FONT ===== -->
 <style>
 @font-face{
-  font-family:'Noir';
-  src:url('fonts/noir.ttf') format('truetype');
+  font-family:'Gendy';
+  src:url('fonts/gendy.ttf');
 }
 @font-face{
-  font-family:'Gendy';
-  src:url('fonts/gendy.ttf') format('truetype');
+  font-family:'Noir';
+  src:url('fonts/noir.ttf');
 }
 @font-face{
   font-family:'Android';
-  src:url('fonts/android.ttf') format('truetype');
+  src:url('fonts/android.ttf');
 }
 </style>
 
@@ -29,10 +29,61 @@
 }
 
 body{
-  font-family:'Gendy', sans-serif; /* INFORMATION */
-  background:linear-gradient(135deg,#949398,#004146);
+  font-family:'Gendy', sans-serif;
   color:#fff;
+  background:linear-gradient(135deg,#949398,#004146);
   overflow-x:hidden;
+}
+
+/* ===== BACKGROUND ANIMATION ===== */
+.bg-animation{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+}
+
+.bar{
+  position:absolute;
+  background:rgba(255,255,255,0.08);
+  border-radius:40px;
+}
+
+/* Horizontal bars */
+.bar.h1{
+  width:120%;
+  height:140px;
+  top:15%;
+  animation: moveH 35s linear infinite;
+}
+.bar.h2{
+  width:120%;
+  height:90px;
+  top:55%;
+  animation: moveH 50s linear infinite reverse;
+}
+
+/* Vertical bars */
+.bar.v1{
+  width:120px;
+  height:120%;
+  left:10%;
+  animation: moveV 45s linear infinite;
+}
+.bar.v2{
+  width:80px;
+  height:120%;
+  left:75%;
+  animation: moveV 60s linear infinite reverse;
+}
+
+@keyframes moveH{
+  from{transform:translateX(-20%);}
+  to{transform:translateX(20%);}
+}
+@keyframes moveV{
+  from{transform:translateY(-20%);}
+  to{transform:translateY(20%);}
 }
 
 /* ===== NAV ===== */
@@ -43,26 +94,25 @@ nav{
   padding:22px 48px;
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  background:rgba(0,0,0,0.2);
-  backdrop-filter: blur(14px);
-  z-index:1000;
+  backdrop-filter:blur(14px);
+  background:rgba(0,0,0,.25);
+  z-index:100;
 }
 
 .brand{
-  font-family:'Android', sans-serif; /* NAME */
-  font-size:15px;
+  font-family:'Android';
   letter-spacing:2px;
+  font-size:14px;
 }
 
-.menu a{
-  font-size:12px;
+nav a{
   margin-left:28px;
+  font-size:12px;
   text-decoration:none;
   color:#fff;
   opacity:.8;
 }
-.menu a:hover{opacity:1}
+nav a:hover{opacity:1}
 
 /* ===== HERO ===== */
 .hero{
@@ -71,17 +121,16 @@ nav{
 }
 
 .hero h1{
-  font-family:'Noir', serif; /* TITLE */
+  font-family:'Noir';
   font-size:72px;
   font-weight:400;
   line-height:1.05;
-  max-width:900px;
 }
 
 .hero p{
-  margin-top:28px;
-  font-size:18px;
+  margin-top:30px;
   max-width:520px;
+  font-size:17px;
   opacity:.85;
 }
 
@@ -91,55 +140,43 @@ section{
 }
 
 section h2{
-  font-family:'Noir', serif;
+  font-family:'Noir';
   font-size:36px;
-  font-weight:400;
   margin-bottom:48px;
 }
 
-/* ===== CLIENT TRUST ===== */
-.trust{
-  margin-bottom:120px;
-}
-
-.trust h3{
-  font-family:'Noir', serif;
-  font-size:28px;
-  margin-bottom:36px;
-}
-
+/* ===== TRUST ===== */
 .trust-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-  gap:28px;
+  gap:24px;
 }
 
 .trust-grid img{
   width:100%;
   height:120px;
   object-fit:cover;
-  border-radius:16px;
-  opacity:.9;
+  border-radius:18px;
 }
 
-/* ===== KARYA ===== */
+/* ===== KARYA AUTO SCROLL ===== */
 .karya-wrapper{
   overflow:hidden;
 }
 
 .karya-track{
   display:flex;
-  gap:48px;
+  gap:40px;
   width:max-content;
-  animation: scroll 40s linear infinite;
+  animation: scroll 45s linear infinite;
 }
 
 .karya-track img{
-  width:420px;
-  height:280px;
-  object-fit:cover;
+  width:380px;
+  height:240px;
   border-radius:24px;
-  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  object-fit:cover;
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
 
 @keyframes scroll{
@@ -147,32 +184,18 @@ section h2{
   to{transform:translateX(-50%);}
 }
 
-/* ===== ABOUT ===== */
-.about p{
-  font-size:17px;
-  line-height:1.8;
-  margin-bottom:18px;
-  opacity:.9;
-}
-
 /* ===== PRICE ===== */
-.services{
+.price{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:40px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:32px;
 }
 
-.service-box{
+.box{
   padding:40px;
-  border-radius:24px;
-  background:rgba(255,255,255,0.15);
-  backdrop-filter: blur(12px);
-}
-
-.service-box h3{
-  font-family:'Noir', serif;
-  font-size:22px;
-  margin-bottom:14px;
+  border-radius:26px;
+  background:rgba(255,255,255,.18);
+  backdrop-filter:blur(14px);
 }
 
 /* ===== FOOTER ===== */
@@ -182,16 +205,15 @@ footer{
   display:flex;
   justify-content:space-between;
   font-size:13px;
-  opacity:.85;
 }
 
 /* ===== MOBILE ===== */
 @media(max-width:768px){
-  .menu{display:none;}
+  nav a{display:none;}
   .hero h1{font-size:42px;}
   .karya-track img{
-    width:280px;
-    height:190px;
+    width:260px;
+    height:180px;
   }
 }
 </style>
@@ -199,9 +221,17 @@ footer{
 
 <body>
 
+<!-- BACKGROUND LAYER -->
+<div class="bg-animation">
+  <div class="bar h1"></div>
+  <div class="bar h2"></div>
+  <div class="bar v1"></div>
+  <div class="bar v2"></div>
+</div>
+
 <nav>
   <div class="brand">AMD DESIGN</div>
-  <div class="menu">
+  <div>
     <a href="#work">Work</a>
     <a href="#about">About</a>
     <a href="#price">Price</a>
@@ -210,16 +240,15 @@ footer{
 </nav>
 
 <section class="hero">
-  <h1>Aiman — Sports<br>Graphic Designer</h1>
+  <h1>Aiman<br>Sports Graphic Designer</h1>
   <p>
-    Clean, modern, and impactful football visuals
-    for players, academies, and clubs worldwide.
+    Matchday graphics, football visuals, and modern
+    social media content for players and academies worldwide.
   </p>
 </section>
 
-<!-- CLIENT TRUST -->
-<section class="trust">
-  <h3>Yang Pernah Mempercayai Saya</h3>
+<section>
+  <h2>Yang Pernah Mempercayai Saya</h2>
   <div class="trust-grid">
     <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
     <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
@@ -242,41 +271,27 @@ footer{
       <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
       <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
       <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
-      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
     </div>
   </div>
-</section>
-
-<section id="about" class="about">
-  <h2>About</h2>
-  <p><strong>Aiman Maulidhan Maulidhan</strong> — Sports Graphic Designer</p>
-  <p>📍 Jambi, Indonesia | Working Worldwide</p>
-  <p>100+ freelance clients · Open for work</p>
 </section>
 
 <section id="price">
   <h2>Price</h2>
-  <div class="services">
-    <div class="service-box">
-      <h3>Matchday Design</h3>
-      <p>$5 per design</p>
+  <div class="price">
+    <div class="box">
+      <h3>Matchday</h3>
+      <p>$5 / design</p>
     </div>
-    <div class="service-box">
-      <h3>Feed / Social Media</h3>
-      <p>$3 per design</p>
+    <div class="box">
+      <h3>Feed</h3>
+      <p>$3 / design</p>
     </div>
   </div>
 </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>📞 +62 819 3278 7003</p>
-  <p>📸 Instagram: @amddesignn_</p>
-</section>
-
-<footer>
+<footer id="contact">
   <div>© 2026 AMD Design</div>
-  <div>Sports Graphic Designer</div>
+  <div>@amddesignn_ | +62 81932787003</div>
 </footer>
 
 </body>
