@@ -7,65 +7,83 @@
 
 <!-- ===== FONT ===== -->
 <style>
-@font-face{font-family:'Gendy';src:url('fonts/gendy.ttf');}
-@font-face{font-family:'Noir';src:url('fonts/noir.ttf');}
-@font-face{font-family:'Android';src:url('fonts/android.ttf');}
+@font-face{
+  font-family:'Gendy';
+  src:url('fonts/gendy.ttf');
+}
+@font-face{
+  font-family:'Noir';
+  src:url('fonts/noir.ttf');
+}
+@font-face{
+  font-family:'Android';
+  src:url('fonts/android.ttf');
+}
 </style>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
 body{
-  font-family:'Gendy';
-  background:linear-gradient(135deg,#949398,#004146);
+  font-family:'Gendy', sans-serif;
   color:#fff;
+  background:linear-gradient(135deg,#949398,#004146);
   overflow-x:hidden;
-  cursor:none;
 }
 
-/* ===== NOISE ===== */
-.noise{
+/* ===== BACKGROUND ANIMATION ===== */
+.bg-animation{
   position:fixed;
   inset:0;
-  background:url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity:.08;
-  pointer-events:none;
-  z-index:1;
-}
-
-/* ===== BACKGROUND PARALLAX ===== */
-.bg{
-  position:fixed;
-  inset:0;
-  z-index:-2;
+  z-index:-1;
   overflow:hidden;
 }
-.layer{
+
+.bar{
   position:absolute;
-  border-radius:100px;
-  background:rgba(255,255,255,.08);
+  background:rgba(255,255,255,0.08);
+  border-radius:40px;
 }
-.l1{width:120%;height:140px;top:15%;animation:parallax 40s linear infinite;}
-.l2{width:80px;height:120%;left:10%;animation:parallaxV 55s linear infinite;}
-.l3{width:100px;height:120%;left:75%;animation:parallaxV 70s linear infinite reverse;}
 
-@keyframes parallax{from{transform:translateX(-20%);}to{transform:translateX(20%);}}
-@keyframes parallaxV{from{transform:translateY(-20%);}to{transform:translateY(20%);}}
-
-/* ===== CUSTOM CURSOR ===== */
-.cursor{
-  width:18px;
-  height:18px;
-  border:2px solid #fff;
-  border-radius:50%;
-  position:fixed;
-  pointer-events:none;
-  z-index:9999;
-  transform:translate(-50%,-50%);
-  transition:.15s ease;
+/* Horizontal bars */
+.bar.h1{
+  width:120%;
+  height:140px;
+  top:15%;
+  animation: moveH 35s linear infinite;
 }
-.cursor.active{
-  transform:translate(-50%,-50%) scale(2);
-  background:rgba(255,255,255,.15);
+.bar.h2{
+  width:120%;
+  height:90px;
+  top:55%;
+  animation: moveH 50s linear infinite reverse;
+}
+
+/* Vertical bars */
+.bar.v1{
+  width:120px;
+  height:120%;
+  left:10%;
+  animation: moveV 45s linear infinite;
+}
+.bar.v2{
+  width:80px;
+  height:120%;
+  left:75%;
+  animation: moveV 60s linear infinite reverse;
+}
+
+@keyframes moveH{
+  from{transform:translateX(-20%);}
+  to{transform:translateX(20%);}
+}
+@keyframes moveV{
+  from{transform:translateY(-20%);}
+  to{transform:translateY(20%);}
 }
 
 /* ===== NAV ===== */
@@ -76,90 +94,108 @@ nav{
   padding:22px 48px;
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  background:rgba(0,0,0,.25);
   backdrop-filter:blur(14px);
+  background:rgba(0,0,0,.25);
   z-index:100;
 }
-.brand{font-family:'Android';letter-spacing:2px;font-size:14px;}
-.menu a{
+
+.brand{
+  font-family:'Android';
+  letter-spacing:2px;
+  font-size:14px;
+}
+
+nav a{
   margin-left:28px;
-  text-decoration:none;
   font-size:12px;
+  text-decoration:none;
   color:#fff;
   opacity:.8;
 }
-.menu a:hover{opacity:1}
-
-/* ===== HAMBURGER ===== */
-.burger{
-  display:none;
-  flex-direction:column;
-  gap:6px;
-  cursor:pointer;
-}
-.burger span{
-  width:22px;height:2px;background:#fff;
-}
-
-/* ===== MOBILE MENU ===== */
-.mobile-menu{
-  position:fixed;
-  top:0;right:-100%;
-  width:70%;
-  height:100%;
-  background:rgba(0,0,0,.85);
-  backdrop-filter:blur(20px);
-  padding:120px 40px;
-  transition:.5s ease;
-  z-index:200;
-}
-.mobile-menu a{
-  display:block;
-  margin-bottom:28px;
-  font-family:'Noir';
-  font-size:22px;
-  text-decoration:none;
-  color:#fff;
-}
-.mobile-menu.active{right:0}
+nav a:hover{opacity:1}
 
 /* ===== HERO ===== */
 .hero{
   min-height:100vh;
   padding:160px 48px 80px;
 }
+
 .hero h1{
   font-family:'Noir';
   font-size:72px;
+  font-weight:400;
   line-height:1.05;
 }
+
 .hero p{
   margin-top:30px;
   max-width:520px;
+  font-size:17px;
   opacity:.85;
 }
 
-/* ===== KARYA ===== */
-section{padding:140px 48px}
-h2{font-family:'Noir';font-size:36px;margin-bottom:48px}
+/* ===== SECTION ===== */
+section{
+  padding:140px 48px;
+}
 
-.track{
+section h2{
+  font-family:'Noir';
+  font-size:36px;
+  margin-bottom:48px;
+}
+
+/* ===== TRUST ===== */
+.trust-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:24px;
+}
+
+.trust-grid img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  border-radius:18px;
+}
+
+/* ===== KARYA AUTO SCROLL ===== */
+.karya-wrapper{
+  overflow:hidden;
+}
+
+.karya-track{
   display:flex;
   gap:40px;
   width:max-content;
-  animation:scroll 45s linear infinite;
+  animation: scroll 45s linear infinite;
 }
-.track img{
-  width:380px;height:240px;
-  object-fit:cover;
+
+.karya-track img{
+  width:380px;
+  height:240px;
   border-radius:24px;
+  object-fit:cover;
   box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
 
 @keyframes scroll{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
+/* ===== PRICE ===== */
+.price{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:32px;
+}
+
+.box{
+  padding:40px;
+  border-radius:26px;
+  background:rgba(255,255,255,.18);
+  backdrop-filter:blur(14px);
 }
 
 /* ===== FOOTER ===== */
@@ -173,55 +209,64 @@ footer{
 
 /* ===== MOBILE ===== */
 @media(max-width:768px){
-  body{cursor:auto}
-  .menu{display:none}
-  .burger{display:flex}
-  .hero h1{font-size:42px}
-  .track img{width:260px;height:180px}
+  nav a{display:none;}
+  .hero h1{font-size:42px;}
+  .karya-track img{
+    width:260px;
+    height:180px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="cursor"></div>
-<div class="noise"></div>
-
-<div class="bg">
-  <div class="layer l1"></div>
-  <div class="layer l2"></div>
-  <div class="layer l3"></div>
+<!-- BACKGROUND LAYER -->
+<div class="bg-animation">
+  <div class="bar h1"></div>
+  <div class="bar h2"></div>
+  <div class="bar v1"></div>
+  <div class="bar v2"></div>
 </div>
 
 <nav>
   <div class="brand">AMD DESIGN</div>
-  <div class="menu">
-    <a href="#">Work</a>
-    <a href="#">About</a>
-    <a href="#">Price</a>
-    <a href="#">Contact</a>
-  </div>
-  <div class="burger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+  <div>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#price">Price</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#">Work</a>
-  <a href="#">About</a>
-  <a href="#">Price</a>
-  <a href="#">Contact</a>
-</div>
-
 <section class="hero">
   <h1>Aiman<br>Sports Graphic Designer</h1>
-  <p>Modern football visuals for players and academies worldwide.</p>
+  <p>
+    Matchday graphics, football visuals, and modern
+    social media content for players and academies worldwide.
+  </p>
 </section>
 
 <section>
+  <h2>Yang Pernah Mempercayai Saya</h2>
+  <div class="trust-grid">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+    <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
+    <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58">
+    <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f">
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+  </div>
+</section>
+
+<section id="work">
   <h2>Karya</h2>
-  <div style="overflow:hidden">
-    <div class="track">
+  <div class="karya-wrapper">
+    <div class="karya-track">
       <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
       <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
       <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
@@ -230,25 +275,24 @@ footer{
   </div>
 </section>
 
-<footer>
+<section id="price">
+  <h2>Price</h2>
+  <div class="price">
+    <div class="box">
+      <h3>Matchday</h3>
+      <p>$5 / design</p>
+    </div>
+    <div class="box">
+      <h3>Feed</h3>
+      <p>$3 / design</p>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
   <div>© 2026 AMD Design</div>
   <div>@amddesignn_ | +62 81932787003</div>
 </footer>
-
-<script>
-const cursor=document.querySelector('.cursor');
-document.addEventListener('mousemove',e=>{
-  cursor.style.left=e.clientX+'px';
-  cursor.style.top=e.clientY+'px';
-});
-document.querySelectorAll('a,img').forEach(el=>{
-  el.addEventListener('mouseenter',()=>cursor.classList.add('active'));
-  el.addEventListener('mouseleave',()=>cursor.classList.remove('active'));
-});
-function toggleMenu(){
-  document.getElementById('mobileMenu').classList.toggle('active');
-}
-</script>
 
 </body>
 </html>
