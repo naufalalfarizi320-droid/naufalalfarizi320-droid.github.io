@@ -18,25 +18,22 @@
 body{
   background:#fff;
   color:#000;
+  overflow:hidden;
 }
 
-/* ===== NAVBAR ===== */
+/* ===== MENU ===== */
 nav{
   position:fixed;
   top:0;
-  left:0;
   width:100%;
-  padding:24px 40px;
+  padding:22px 40px;
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  z-index:1000;
-  pointer-events:auto;
+  z-index:100;
 }
 
 nav .logo{
   font-size:14px;
-  font-weight:400;
 }
 
 nav .menu a{
@@ -44,7 +41,7 @@ nav .menu a{
   text-decoration:none;
   color:#000;
   margin-left:28px;
-  opacity:.8;
+  opacity:.7;
 }
 
 nav .menu a:hover{
@@ -66,24 +63,21 @@ nav .menu a:hover{
   letter-spacing:-2px;
 }
 
-/* ===== PARALLAX SECTION ===== */
-.parallax-section{
+/* ===== AUTO VERTICAL GALLERY ===== */
+.gallery-wrapper{
   position:relative;
-  height:220vh;
-  padding:0 40px;
-}
-
-.parallax-gallery{
-  position:sticky;
-  top:0;
   height:100vh;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:40px;
+  padding:0 40px;
   overflow:hidden;
 }
 
-/* COLUMNS */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+}
+
+/* COLUMN */
 .column{
   display:flex;
   flex-direction:column;
@@ -98,27 +92,10 @@ nav .menu a:hover{
   border-radius:14px;
 }
 
-/* SECTIONS */
-.section{
-  padding:160px 40px;
-  max-width:900px;
-}
-
-.section h2{
-  font-size:32px;
-  font-weight:400;
-  margin-bottom:24px;
-}
-
-.section p{
-  font-size:16px;
-  line-height:1.7;
-  color:#444;
-}
-
 /* RESPONSIVE */
 @media(max-width:900px){
-  .parallax-gallery{
+  body{overflow:auto;}
+  .gallery{
     grid-template-columns:1fr;
   }
 }
@@ -127,13 +104,14 @@ nav .menu a:hover{
 
 <body>
 
-<!-- ===== NAV ===== -->
+<!-- MENU -->
 <nav>
   <div class="logo">YOUR NAME</div>
   <div class="menu">
-    <a href="#work">Work</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+    <a href="#">Work</a>
+    <a href="#">Projects</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
   </div>
 </nav>
 
@@ -141,79 +119,54 @@ nav .menu a:hover{
   <h1>Visual Designer<br>Creative Direction</h1>
 </section>
 
-<!-- ===== PARALLAX ===== -->
-<section class="parallax-section" id="work">
-  <div class="parallax-gallery">
+<!-- AUTO MOVING GALLERY -->
+<section class="gallery-wrapper">
+  <div class="gallery">
 
-    <!-- LEFT -->
-    <div class="column" data-speed="0.4">
+    <!-- LEFT (DOWN) -->
+    <div class="column" data-speed="0.25">
       <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
       <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa">
       <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
     </div>
 
-    <!-- CENTER -->
-    <div class="column" data-speed="-0.55">
+    <!-- CENTER (UP) -->
+    <div class="column" data-speed="-0.35">
       <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
       <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
       <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
     </div>
 
-    <!-- RIGHT -->
-    <div class="column" data-speed="0.4">
+    <!-- RIGHT (DOWN) -->
+    <div class="column" data-speed="0.25">
       <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58">
       <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f">
       <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+      <img src="https://images.unsplash.com/photo-1487014679447-9f8336841d58">
     </div>
 
   </div>
 </section>
 
-<section id="about" class="section">
-  <h2>About</h2>
-  <p>
-    I’m a visual designer focused on editorial layouts, subtle motion,
-    and premium digital experiences inspired by contemporary portfolios.
-  </p>
-</section>
-
-<section id="contact" class="section">
-  <h2>Contact</h2>
-  <p>
-    Instagram · Behance · Email
-  </p>
-</section>
-
 <script>
-/* ===== SMOOTH SCROLL INERTIA ===== */
-let currentScroll = window.scrollY;
-let targetScroll = window.scrollY;
-const ease = 0.08;
-
-const section = document.querySelector('.parallax-section');
+/* ===== AUTO MOTION ENGINE ===== */
 const columns = document.querySelectorAll('.column');
+let offset = 0;
 
-window.addEventListener('scroll', () => {
-  targetScroll = window.scrollY;
-});
-
-function raf(){
-  currentScroll += (targetScroll - currentScroll) * ease;
-
-  const rect = section.getBoundingClientRect();
-  const progress = Math.min(
-    Math.max((window.innerHeight - rect.top) / rect.height, 0),
-    1
-  );
+function animate(){
+  offset += 0.3; // speed global
 
   columns.forEach(col => {
     const speed = col.dataset.speed;
-    col.style.transform = `translateY(${progress * 400 * speed}px)`;
+    col.style.transform = `translateY(${offset * speed}px)`;
   });
 
-  requestAnimationFrame(raf);
+  requestAnimationFrame(animate);
 }
-raf();
+
+animate();
 </script>
 
 </body>
