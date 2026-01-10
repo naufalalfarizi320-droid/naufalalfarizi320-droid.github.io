@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AMD Design</title>
+<title>AMD Design | Sports Graphic</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
@@ -16,116 +16,114 @@
 body{
   font-family:'Gendy',sans-serif;
   color:#fff;
-  background:linear-gradient(135deg,#949398,#004146);
+  background:linear-gradient(135deg,#1a1a1c,#004146);
   overflow-x:hidden;
 }
 
 /* ===== BACKGROUND & PARTICLE ===== */
-.bg-animation{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.bg-animation{position:fixed;inset:0;z-index:-1;overflow:hidden;background:#0f0f0f;}
 .bar{position:absolute;background:rgba(255,255,255,0.08);border-radius:40px;filter:blur(6px)}
 .bar.h1{width:130%;height:160px;top:18%;animation:moveH 38s ease-in-out infinite}
 .bar.h2{width:130%;height:100px;top:60%;animation:moveH 52s ease-in-out infinite reverse}
-.bar.v1{width:140px;height:130%;left:12%;animation:moveV 46s ease-in-out infinite}
-.bar.v2{width:90px;height:130%;left:78%;animation:moveV 60s ease-in-out infinite reverse}
 
 .particle{
   position:absolute;
   pointer-events:none;
   border-radius:50%;
-  animation:explode 1s ease-out forwards, floatUp 10s linear forwards 1s;
+  z-index: 999;
+  animation:explode 1s ease-out forwards, floatUp 8s linear forwards 1s;
 }
 
 @keyframes explode {
   0% { transform: translate(0,0) scale(1); opacity: 1; }
-  100% { transform: translate(var(--x), var(--y)) scale(0.6); opacity: 0.8; }
+  100% { transform: translate(var(--x), var(--y)) scale(0.5); opacity: 0.8; }
 }
 @keyframes floatUp {
   to { transform: translate(var(--x), -120vh); opacity: 0; }
 }
 
 @keyframes moveH{ 0%{transform:translateX(-40%)} 50%{transform:translateX(0%)} 100%{transform:translateX(40%)} }
-@keyframes moveV{ 0%{transform:translateY(-40%)} 50%{transform:translateY(0%)} 100%{transform:translateY(40%)} }
 
 /* ===== NAV ===== */
 nav{
-  position:fixed;top:0;width:100%;padding:15px 48px;
+  position:fixed;top:0;width:100%;padding:15px 40px;
   display:flex;justify-content:space-between;align-items:center;
-  backdrop-filter:blur(18px);background:rgba(0,0,0,.22);z-index:100;
+  backdrop-filter:blur(18px);background:rgba(0,0,0,.3);z-index:1000;
 }
-.brand{font-family:'Android';font-size:12px;letter-spacing:3px;}
-nav a{margin-left:32px;font-size:11px;letter-spacing:2px;text-decoration:none;color:#fff;opacity:.65;}
-nav a i{margin-right:6px;font-size:11px}
-nav a:hover{opacity:1}
+.brand{font-family:'Android';font-size:12px;letter-spacing:3px;color:#00ffcc}
+nav a{margin-left:25px;font-size:11px;letter-spacing:2px;text-decoration:none;color:#fff;opacity:.65;transition:.3s}
+nav a:hover{opacity:1;color:#00ffcc}
 
-/* ===== HERO (TINGGI DISESUAIKAN) ===== */
-.hero{min-height:60vh;padding:120px 48px 20px;}
-.hero h1{font-family:'Noir';font-size:72px;line-height:1.05;}
-.hero p{margin-top:20px;max-width:520px;font-size:17px;opacity:.85;}
+/* ===== HERO ===== */
+.hero{min-height:65vh;padding:120px 48px 20px;}
+.hero h1{font-family:'Noir';font-size:clamp(40px, 8vw, 72px);line-height:1.05;}
+.hero p{margin-top:20px;max-width:520px;font-size:17px;opacity:.85;border-left:2px solid #00ffcc;padding-left:15px}
 
-/* ===== PROFILE (POSISI TENGAH) ===== */
-.profile-container{
-  margin-top: -60px; /* Menarik profil ke arah Hero */
-  position: relative;
-  z-index: 10;
-}
-.profile-mini{display:flex;justify-content:center;margin-bottom:15px;}
+/* ===== PROFILE CENTERED ===== */
+.profile-container{margin-top:-60px;position:relative;z-index:10}
+.profile-mini{display:flex;justify-content:center;margin-bottom:15px}
 .profile-frame{
   width:180px;height:180px;padding:6px;border-radius:50%;
-  background:linear-gradient(135deg,rgba(255,255,255,.7),rgba(255,255,255,.15));
-  box-shadow:0 15px 40px rgba(0,0,0,.4);
+  background:linear-gradient(135deg,#00ffcc,rgba(255,255,255,0.2));
+  box-shadow:0 15px 40px rgba(0,0,0,0.5);
 }
-.profile-frame img{width:100%;height:100%;border-radius:50%;object-fit:cover;}
+.profile-frame img{width:100%;height:100%;border-radius:50%;object-fit:cover}
 
-.social-icons{display:flex;justify-content:center;gap:18px;margin-bottom:30px;}
+.social-icons{display:flex;justify-content:center;gap:15px;margin-bottom:30px}
 .social-icons a{
-  width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.18);backdrop-filter:blur(10px);color:#fff;transition:.3s;
+  width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.1);backdrop-filter:blur(10px);color:#fff;text-decoration:none;transition:.3s;font-size:18px;
 }
-.social-icons a:hover{background:rgba(255,255,255,.35);transform:translateY(-4px);}
+.social-icons a:hover{background:#00ffcc;color:#000;transform:translateY(-5px)}
 
 /* ===== SECTION ===== */
-section{padding:40px 48px}
-section h2{font-family:'Noir';font-size:36px;margin-bottom:30px;display:flex;align-items:center;gap:15px}
+section{padding:50px 48px}
+section h2{font-family:'Noir';font-size:32px;margin-bottom:30px;display:flex;align-items:center;gap:15px}
+section h2 i{color:#00ffcc;font-size:24px}
 
 /* ===== CLIENT ===== */
-.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:15px;}
-.trust-grid img{width:100%;height:120px;object-fit:cover;border-radius:18px;opacity:.8;}
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:15px}
+.trust-grid img{width:100%;height:110px;object-fit:cover;border-radius:15px;opacity:.7;transition:.3s}
+.trust-grid img:hover{opacity:1;transform:scale(1.05)}
 
 /* ===== KARYA ===== */
 .karya-wrapper{overflow:hidden}
-.karya-track{display:flex;gap:30px;width:max-content;animation:scroll 22s linear infinite;}
-.karya-track img{width:260px;height:420px;border-radius:24px;object-fit:cover;box-shadow:0 20px 60px rgba(0,0,0,0.4);}
+.karya-track{display:flex;gap:25px;width:max-content;animation:scroll 25s linear infinite}
+.karya-track img{width:240px;height:380px;border-radius:20px;object-fit:cover;box-shadow:0 15px 40px rgba(0,0,0,0.4)}
 @keyframes scroll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
 /* ===== PRICE ===== */
-.price{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;}
+.price{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
 .box{
-  padding:30px;border-radius:26px;background:rgba(255,255,255,.18);
-  backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);
+  padding:30px;border-radius:25px;background:rgba(255,255,255,.05);
+  backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.1);transition:.3s;
 }
-.box h3{display:flex;align-items:center;gap:10px;margin-bottom:10px;color:#00ffcc}
-.box p{line-height:1.8;font-size:14px}
-.box p i{color:#00ffcc;margin-right:8px;width:15px;text-align:center}
+.box:hover{border-color:#00ffcc;background:rgba(255,255,255,.08)}
+.box h3{display:flex;align-items:center;gap:10px;margin-bottom:15px;color:#00ffcc;font-family:'Noir'}
+.box p{line-height:1.8;font-size:14px;opacity:.9}
+.box p i{color:#00ffcc;margin-right:10px;width:15px;text-align:center}
 
 /* ===== FOOTER ===== */
 footer{
-  padding:60px 48px;border-top:1px solid rgba(255,255,255,.2);
-  display:flex;justify-content:space-between;font-size:13px;align-items:center;
+  padding:50px 48px;border-top:1px solid rgba(255,255,255,.1);
+  display:flex;justify-content:space-between;align-items:center;font-size:13px;
 }
-.footer-contact i{color:#00ffcc;margin-right:8px}
+.footer-contact a{text-decoration:none;color:inherit;margin-left:15px;transition:.3s}
+.footer-contact a:hover{color:#00ffcc}
+.footer-contact i{color:#00ffcc;margin-right:5px}
 
-/* ===== MUSIC ===== */
 .music-btn{
-  position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:50%;
+  position:fixed;bottom:25px;right:25px;width:45px;height:45px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  background:rgba(0,0,0,.35);backdrop-filter:blur(12px);cursor:pointer;z-index:200;
+  background:rgba(0,255,204,.2);backdrop-filter:blur(10px);cursor:pointer;z-index:2000;border:1px solid #00ffcc;
 }
 
 @media(max-width:768px){
-  nav a{display:none;}
-  .hero h1{font-size:42px;}
-  .profile-container{margin-top: -40px;}
-  footer{flex-direction:column;gap:20px;text-align:center}
+  nav a{display:none}
+  .hero{padding:100px 25px 20px}
+  .hero h1{font-size:42px}
+  section{padding:40px 25px}
+  footer{flex-direction:column;gap:15px;text-align:center}
 }
 </style>
 </head>
@@ -135,8 +133,6 @@ footer{
 <div class="bg-animation" id="bg">
   <div class="bar h1"></div>
   <div class="bar h2"></div>
-  <div class="bar v1"></div>
-  <div class="bar v2"></div>
 </div>
 
 <audio id="bgMusic" loop>
@@ -154,8 +150,8 @@ footer{
 </nav>
 
 <section class="hero">
-  <h1>Aiman<br>Sports Graphic Designer</h1>
-  <p>Matchday graphics, football visuals, and modern social media content for players and academies worldwide.</p>
+  <h1>Aiman<br><span style="color:#00ffcc">Sports Graphic</span><br>Designer</h1>
+  <p>Elevating matchday visuals and social media content for athletes and football academies worldwide.</p>
 </section>
 
 <div class="profile-container">
@@ -166,14 +162,14 @@ footer{
   </div>
 
   <div class="social-icons">
-    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-    <a href="#"><i class="fa-solid fa-envelope"></i></a>
+    <a href="https://www.instagram.com/amddesignn_/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://wa.me/6281932787003?text=Halo%20AMD%20Design,%20saya%20tertarik%20dengan%20layanan%20grafis%20Anda" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="mailto:contact@amddesign.com"><i class="fa-solid fa-envelope"></i></a>
   </div>
 </div>
 
 <section id="client">
-  <h2><i class="fa-solid fa-users"></i> CLIENT</h2>
+  <h2><i class="fa-solid fa-handshake"></i> CLIENT</h2>
   <div class="trust-grid">
     <img src="https://i.ibb.co.com/fVBkxxBy/DSC07295-1-1.jpg">
     <img src="https://i.ibb.co.com/qYjV59ZN/SAVE-20260110-070253.jpg">
@@ -187,7 +183,7 @@ footer{
 </section>
 
 <section id="work">
-  <h2><i class="fa-solid fa-fire"></i> Karya</h2>
+  <h2><i class="fa-solid fa-star"></i> KARYA</h2>
   <div class="karya-wrapper">
     <div class="karya-track">
       <img src="https://i.ibb.co.com/zjp0qd7/1001968417-1000.jpg">
@@ -196,30 +192,31 @@ footer{
       <img src="https://i.ibb.co.com/ksmN9VNY/IMG-20260110-WA0065.jpg">
       <img src="https://i.ibb.co.com/1GBTXLTN/IMG-20260110-WA0066.jpg">
       <img src="https://i.ibb.co.com/zjp0qd7/1001968417-1000.jpg">
+      <img src="https://i.ibb.co.com/HftzZ0qG/1001967590-1000.jpg">
     </div>
   </div>
 </section>
 
 <section id="price">
-  <h2><i class="fa-solid fa-cart-shopping"></i> Price</h2>
+  <h2><i class="fa-solid fa-tags"></i> PRICE</h2>
   <div class="price">
     <div class="box">
-      <h3><i class="fa-solid fa-palette"></i> Design Feed</h3>
+      <h3><i class="fa-solid fa-layer-group"></i> Design Feed</h3>
       <p>
-        <i class="fa-solid fa-dollar-sign"></i> $5 / proyek<br>
-        <i class="fa-solid fa-file-image"></i> 1 Design Feed<br>
-        <i class="fa-solid fa-check"></i> Format JPG/PNG<br>
-        <i class="fa-solid fa-rotate-left"></i> Revisi 1<br>
-        <i class="fa-solid fa-clock"></i> Waktu 1–2 hari
+        <i class="fa-solid fa-circle-check"></i> $5 / proyek<br>
+        <i class="fa-solid fa-circle-check"></i> 1 Design Feed (High Res)<br>
+        <i class="fa-solid fa-circle-check"></i> Format JPG/PNG<br>
+        <i class="fa-solid fa-circle-check"></i> Revisi 1<br>
+        <i class="fa-solid fa-circle-check"></i> Waktu 1–2 hari
       </p>
     </div>
     <div class="box">
       <h3><i class="fa-solid fa-trophy"></i> Matchday</h3>
       <p>
-        <i class="fa-solid fa-file-image"></i> 1 Design Matchday<br>
-        <i class="fa-solid fa-check"></i> Format JPG/PNG<br>
-        <i class="fa-solid fa-rotate-left"></i> Revisi 2x<br>
-        <i class="fa-solid fa-clock"></i> Waktu 2–3 hari
+        <i class="fa-solid fa-circle-check"></i> 1 Design Matchday<br>
+        <i class="fa-solid fa-circle-check"></i> Premium Visual Layout<br>
+        <i class="fa-solid fa-circle-check"></i> Revisi 2x<br>
+        <i class="fa-solid fa-circle-check"></i> Waktu 2–3 hari
       </p>
     </div>
   </div>
@@ -228,8 +225,8 @@ footer{
 <footer id="contact">
   <div>© 2026 AMD Design</div>
   <div class="footer-contact">
-    <span><i class="fa-brands fa-instagram"></i> @amddesignn_</span> | 
-    <span><i class="fa-brands fa-whatsapp"></i> +62 81932787003</span>
+    <a href="https://www.instagram.com/amddesignn_/" target="_blank"><i class="fa-brands fa-instagram"></i> @amddesignn_</a>
+    <a href="https://wa.me/6281932787003" target="_blank"><i class="fa-brands fa-whatsapp"></i> +62 81932787003</a>
   </div>
 </footer>
 
@@ -245,25 +242,25 @@ function fadeInMusic(){
 window.addEventListener('click',fadeInMusic,{once:true});
 function toggleMusic(){music.paused?fadeInMusic():music.pause()}
 
+/* ANIMASI KLIK MELEDAK */
 const bg=document.getElementById('bg');
-const colors = ['#ffffff', '#00ffcc', '#004146', '#ffd700'];
+const colors = ['#00ffcc', '#ffffff', '#ffd700', '#004146'];
 
-window.addEventListener('click', e => {
+window.addEventListener('mousedown', e => {
   for(let i=0; i<15; i++){
     const p = document.createElement('div');
     p.className = 'particle';
     const size = Math.random() * 8 + 4 + 'px';
-    p.style.width = size;
-    p.style.height = size;
+    p.style.width = size; p.style.height = size;
     p.style.background = colors[Math.floor(Math.random() * colors.length)];
     p.style.left = e.clientX + 'px';
     p.style.top = e.clientY + 'px';
-    const x = (Math.random() - 0.5) * 300 + 'px';
-    const y = (Math.random() - 0.5) * 300 + 'px';
+    const x = (Math.random() - 0.5) * 350 + 'px';
+    const y = (Math.random() - 0.5) * 350 + 'px';
     p.style.setProperty('--x', x);
     p.style.setProperty('--y', y);
     bg.appendChild(p);
-    setTimeout(() => p.remove(), 11000);
+    setTimeout(() => p.remove(), 9000);
   }
 });
 </script>
