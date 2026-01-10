@@ -22,7 +22,7 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== BACKGROUND ANIMATION (FINAL) ===== */
+/* ===== BACKGROUND ANIMATION ===== */
 .bg-animation{
   position:fixed;
   inset:0;
@@ -37,40 +37,20 @@ body{
   filter:blur(6px);
 }
 
-.bar.h1{
-  width:130%;
-  height:160px;
-  top:18%;
-  animation:moveH 38s ease-in-out infinite;
-}
-.bar.h2{
-  width:130%;
-  height:100px;
-  top:60%;
-  animation:moveH 52s ease-in-out infinite reverse;
-}
-.bar.v1{
-  width:140px;
-  height:130%;
-  left:12%;
-  animation:moveV 46s ease-in-out infinite;
-}
-.bar.v2{
-  width:90px;
-  height:130%;
-  left:78%;
-  animation:moveV 60s ease-in-out infinite reverse;
-}
+.bar.h1{width:130%;height:160px;top:18%;animation:moveH 38s ease-in-out infinite;}
+.bar.h2{width:130%;height:100px;top:60%;animation:moveH 52s ease-in-out infinite reverse;}
+.bar.v1{width:140px;height:130%;left:12%;animation:moveV 46s ease-in-out infinite;}
+.bar.v2{width:90px;height:130%;left:78%;animation:moveV 60s ease-in-out infinite reverse;}
 
 @keyframes moveH{
-  0%{transform:translateX(-40%) scale(1);}
-  50%{transform:translateX(0%) scale(1.08);}
-  100%{transform:translateX(40%) scale(1);}
+  0%{transform:translateX(-40%)}
+  50%{transform:translateX(0%)}
+  100%{transform:translateX(40%)}
 }
 @keyframes moveV{
-  0%{transform:translateY(-40%) scale(1);}
-  50%{transform:translateY(0%) scale(1.1);}
-  100%{transform:translateY(40%) scale(1);}
+  0%{transform:translateY(-40%)}
+  50%{transform:translateY(0%)}
+  100%{transform:translateY(40%)}
 }
 
 /* ===== NAV ===== */
@@ -91,14 +71,12 @@ nav{
   font-family:'Android';
   font-size:12px;
   letter-spacing:3px;
-  text-transform:uppercase;
 }
 
 nav a{
   margin-left:32px;
   font-size:11px;
   letter-spacing:2px;
-  text-transform:uppercase;
   text-decoration:none;
   color:#fff;
   opacity:.65;
@@ -109,37 +87,38 @@ nav a:hover{opacity:1}
 /* ===== HERO ===== */
 .hero{
   min-height:100vh;
-  padding:160px 48px 80px;
+  padding:170px 48px 90px;
 }
 
 .hero h1{
   font-family:'Noir';
   font-size:72px;
-  font-weight:400;
   line-height:1.05;
 }
 
 .hero p{
-  margin-top:30px;
+  margin-top:32px;
   max-width:520px;
   font-size:17px;
   opacity:.85;
 }
 
 /* ===== SECTION ===== */
-section{padding:140px 48px}
+section{
+  padding:130px 48px;
+}
 
 section h2{
   font-family:'Noir';
   font-size:36px;
-  margin-bottom:48px;
+  margin-bottom:56px;
 }
 
 /* ===== TRUST ===== */
 .trust-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-  gap:24px;
+  gap:26px;
 }
 
 .trust-grid img{
@@ -149,39 +128,41 @@ section h2{
   border-radius:18px;
 }
 
-/* ===== KARYA ===== */
-.karya-wrapper{overflow:hidden}
+/* ===== KARYA (DIPERCEPAT & LEBIH HALUS) ===== */
+.karya-wrapper{
+  overflow:hidden;
+}
 
 .karya-track{
   display:flex;
-  gap:40px;
+  gap:42px;
   width:max-content;
-  animation:scroll 35s linear infinite;
+  animation:scroll 22s linear infinite;
 }
 
 .karya-track img{
   width:260px;
   height:420px;
-  border-radius:24px;
+  border-radius:26px;
   object-fit:cover;
-  box-shadow:0 20px 60px rgba(0,0,0,.4);
+  box-shadow:0 22px 70px rgba(0,0,0,.45);
 }
 
 @keyframes scroll{
   from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
+  to{transform:translateX(-45%)}
 }
 
 /* ===== PRICE ===== */
 .price{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:32px;
+  gap:36px;
 }
 
 .box{
-  padding:40px;
-  border-radius:26px;
+  padding:44px;
+  border-radius:28px;
   background:rgba(255,255,255,.18);
   backdrop-filter:blur(14px);
 }
@@ -193,15 +174,16 @@ footer{
   display:flex;
   justify-content:space-between;
   font-size:13px;
+  opacity:.9;
 }
 
-/* ===== MUSIC ===== */
+/* ===== MUSIC BUTTON ===== */
 .music-btn{
   position:fixed;
   bottom:28px;
   right:28px;
-  width:44px;
-  height:44px;
+  width:46px;
+  height:46px;
   border-radius:50%;
   display:flex;
   align-items:center;
@@ -209,7 +191,7 @@ footer{
   background:rgba(0,0,0,.35);
   backdrop-filter:blur(12px);
   cursor:pointer;
-  font-size:13px;
+  font-size:14px;
   z-index:200;
 }
 
@@ -217,10 +199,7 @@ footer{
 @media(max-width:768px){
   nav a{display:none;}
   .hero h1{font-size:42px;}
-  .karya-track img{
-    width:220px;
-    height:360px;
-  }
+  .karya-track img{width:220px;height:360px;}
 }
 </style>
 </head>
@@ -306,9 +285,26 @@ footer{
 
 <script>
 const music = document.getElementById('bgMusic');
+music.volume = 0;
+
+function fadeInMusic(){
+  let v = 0;
+  music.play();
+  const fade = setInterval(()=>{
+    if(v < 0.6){
+      v += 0.02;
+      music.volume = v;
+    } else {
+      clearInterval(fade);
+    }
+  },100);
+}
+
+window.addEventListener('click', fadeInMusic, { once:true });
+
 function toggleMusic(){
   if(music.paused){
-    music.play();
+    fadeInMusic();
   }else{
     music.pause();
   }
@@ -317,6 +313,3 @@ function toggleMusic(){
 
 </body>
 </html>
-
-
-
