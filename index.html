@@ -22,25 +22,13 @@ body{
   overflow-x:hidden;
 }
 
-/* ===== BACKGROUND ANIMATION ===== */
-.bg-animation{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  overflow:hidden;
-}
-
-.bar{
-  position:absolute;
-  background:rgba(255,255,255,0.08);
-  border-radius:40px;
-  filter:blur(6px);
-}
-
-.bar.h1{width:130%;height:160px;top:18%;animation:moveH 38s ease-in-out infinite;}
-.bar.h2{width:130%;height:100px;top:60%;animation:moveH 52s ease-in-out infinite reverse;}
-.bar.v1{width:140px;height:130%;left:12%;animation:moveV 46s ease-in-out infinite;}
-.bar.v2{width:90px;height:130%;left:78%;animation:moveV 60s ease-in-out infinite reverse;}
+/* ===== BACKGROUND ===== */
+.bg-animation{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.bar{position:absolute;background:rgba(255,255,255,0.08);border-radius:40px;filter:blur(6px)}
+.bar.h1{width:130%;height:160px;top:18%;animation:moveH 38s ease-in-out infinite}
+.bar.h2{width:130%;height:100px;top:60%;animation:moveH 52s ease-in-out infinite reverse}
+.bar.v1{width:140px;height:130%;left:12%;animation:moveV 46s ease-in-out infinite}
+.bar.v2{width:90px;height:130%;left:78%;animation:moveV 60s ease-in-out infinite reverse}
 
 @keyframes moveH{
   0%{transform:translateX(-40%)}
@@ -80,47 +68,54 @@ nav a{
   text-decoration:none;
   color:#fff;
   opacity:.65;
-  transition:.3s;
 }
 nav a:hover{opacity:1}
 
 /* ===== HERO ===== */
 .hero{
   min-height:100vh;
-  padding:170px 48px 90px;
+  padding:160px 48px 80px;
 }
-
 .hero h1{
   font-family:'Noir';
   font-size:72px;
   line-height:1.05;
 }
-
 .hero p{
-  margin-top:32px;
+  margin-top:30px;
   max-width:520px;
   font-size:17px;
   opacity:.85;
 }
 
 /* ===== SECTION ===== */
-section{
-  padding:130px 48px;
-}
-
+section{padding:140px 48px}
 section h2{
   font-family:'Noir';
   font-size:36px;
-  margin-bottom:56px;
+  margin-bottom:48px;
 }
 
-/* ===== TRUST ===== */
+/* ===== PROFILE MINI (TAMBAHAN) ===== */
+.profile-mini{
+  display:flex;
+  justify-content:center;
+  margin-bottom:40px;
+}
+.profile-mini img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,.35);
+}
+
+/* ===== CLIENT ===== */
 .trust-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-  gap:26px;
+  gap:24px;
 }
-
 .trust-grid img{
   width:100%;
   height:120px;
@@ -128,43 +123,42 @@ section h2{
   border-radius:18px;
 }
 
-/* ===== KARYA (DIPERCEPAT & LEBIH HALUS) ===== */
-.karya-wrapper{
-  overflow:hidden;
-}
-
+/* ===== KARYA ===== */
+.karya-wrapper{overflow:hidden}
 .karya-track{
   display:flex;
-  gap:42px;
+  gap:40px;
   width:max-content;
   animation:scroll 22s linear infinite;
 }
-
 .karya-track img{
   width:260px;
   height:420px;
-  border-radius:26px;
+  border-radius:24px;
   object-fit:cover;
-  box-shadow:0 22px 70px rgba(0,0,0,.45);
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
-
 @keyframes scroll{
   from{transform:translateX(0)}
-  to{transform:translateX(-45%)}
+  to{transform:translateX(-50%)}
 }
 
 /* ===== PRICE ===== */
 .price{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:36px;
+  gap:32px;
 }
-
 .box{
-  padding:44px;
-  border-radius:28px;
+  padding:40px;
+  border-radius:26px;
   background:rgba(255,255,255,.18);
   backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.12); /* STROKE HALUS */
+}
+.box p{
+  margin-top:10px;
+  line-height:1.6;
 }
 
 /* ===== FOOTER ===== */
@@ -174,16 +168,15 @@ footer{
   display:flex;
   justify-content:space-between;
   font-size:13px;
-  opacity:.9;
 }
 
-/* ===== MUSIC BUTTON ===== */
+/* ===== MUSIC ===== */
 .music-btn{
   position:fixed;
   bottom:28px;
   right:28px;
-  width:46px;
-  height:46px;
+  width:44px;
+  height:44px;
   border-radius:50%;
   display:flex;
   align-items:center;
@@ -191,22 +184,18 @@ footer{
   background:rgba(0,0,0,.35);
   backdrop-filter:blur(12px);
   cursor:pointer;
-  font-size:14px;
   z-index:200;
 }
 
-/* ===== MOBILE ===== */
 @media(max-width:768px){
   nav a{display:none;}
   .hero h1{font-size:42px;}
-  .karya-track img{width:220px;height:360px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND -->
 <div class="bg-animation">
   <div class="bar h1"></div>
   <div class="bar h2"></div>
@@ -214,7 +203,6 @@ footer{
   <div class="bar v2"></div>
 </div>
 
-<!-- MUSIC -->
 <audio id="bgMusic" loop>
   <source src="audio/ambient.mp3" type="audio/mpeg">
 </audio>
@@ -239,15 +227,17 @@ footer{
 
 <section>
   <h2>CLIENT</h2>
-  <div class="trust-grid">
+
+  <!-- PROFIL -->
+  <div class="profile-mini">
     <img src="https://i.ibb.co.com/fVBkxxBy/DSC07295-1-1.jpg">
+  </div>
+
+  <div class="trust-grid">
     <img src="https://i.ibb.co.com/qYjV59ZN/SAVE-20260110-070253.jpg">
     <img src="https://i.ibb.co.com/Y7QPTmHn/SAVE-20260110-064947.jpg">
     <img src="https://i.ibb.co.com/9Hh8N387/IMG-20260110-070248-272.jpg">
     <img src="https://i.ibb.co.com/ch4T9Jj9/IMG-20260110-070246-795.jpg">
-    <img src="https://i.ibb.co.com/3yhk3Vwy/IMG-20260110-065022-205.jpg">
-    <img src="https://i.ibb.co.com/7NKfdkbG/IMG-20260110-065007-293.jpg">
-    <img src="https://i.ibb.co.com/Rpf1jS3L/IMG-20260110-065001-289.jpg">
   </div>
 </section>
 
@@ -258,8 +248,6 @@ footer{
       <img src="https://i.ibb.co.com/zjp0qd7/1001968417-1000.jpg">
       <img src="https://i.ibb.co.com/HftzZ0qG/1001967590-1000.jpg">
       <img src="https://i.ibb.co.com/svh3GTkq/1001966742-1000.jpg">
-      <img src="https://i.ibb.co.com/ksmN9VNY/IMG-20260110-WA0065.jpg">
-      <img src="https://i.ibb.co.com/1GBTXLTN/IMG-20260110-WA0066.jpg">
     </div>
   </div>
 </section>
@@ -268,12 +256,23 @@ footer{
   <h2>Price</h2>
   <div class="price">
     <div class="box">
-      <h3>Matchday</h3>
-      <p>$5 / design</p>
+      <h3>Design Feed</h3>
+      <p>
+        $5 / proyek<br>
+        1 Design Feed<br>
+        Format JPG/PNG<br>
+        Revisi 1<br>
+        Waktu 1–2 hari
+      </p>
     </div>
     <div class="box">
-      <h3>Feed</h3>
-      <p>$3 / design</p>
+      <h3>Matchday</h3>
+      <p>
+        1 Design Matchday<br>
+        Format JPG/PNG<br>
+        Revisi 2x<br>
+        Waktu 2–3 hari
+      </p>
     </div>
   </div>
 </section>
@@ -284,31 +283,16 @@ footer{
 </footer>
 
 <script>
-const music = document.getElementById('bgMusic');
-music.volume = 0;
-
+const music=document.getElementById('bgMusic');
+music.volume=0;
 function fadeInMusic(){
-  let v = 0;
-  music.play();
-  const fade = setInterval(()=>{
-    if(v < 0.6){
-      v += 0.02;
-      music.volume = v;
-    } else {
-      clearInterval(fade);
-    }
-  },100);
+  let v=0;music.play();
+  const f=setInterval(()=>{
+    if(v<0.6){v+=0.02;music.volume=v}else clearInterval(f)
+  },100)
 }
-
-window.addEventListener('click', fadeInMusic, { once:true });
-
-function toggleMusic(){
-  if(music.paused){
-    fadeInMusic();
-  }else{
-    music.pause();
-  }
-}
+window.addEventListener('click',fadeInMusic,{once:true});
+function toggleMusic(){music.paused?fadeInMusic():music.pause()}
 </script>
 
 </body>
