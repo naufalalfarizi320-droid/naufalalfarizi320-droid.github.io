@@ -12,7 +12,7 @@
 @font-face{font-family:'Android';src:url('fonts/android.ttf')}
 </style>
 
-<!-- ===== ICON (DITAMBAHKAN) ===== -->
+<!-- ===== ICON ===== -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
@@ -33,6 +33,16 @@ body{
 .bar.v1{width:140px;height:130%;left:12%;animation:moveV 46s ease-in-out infinite}
 .bar.v2{width:90px;height:130%;left:78%;animation:moveV 60s ease-in-out infinite reverse}
 
+/* partikel tambahan */
+.particle{
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:rgba(255,255,255,.25);
+  animation:floatP 12s linear infinite;
+}
+
 @keyframes moveH{
   0%{transform:translateX(-40%)}
   50%{transform:translateX(0%)}
@@ -42,6 +52,10 @@ body{
   0%{transform:translateY(-40%)}
   50%{transform:translateY(0%)}
   100%{transform:translateY(40%)}
+}
+@keyframes floatP{
+  from{transform:translateY(0);opacity:1}
+  to{transform:translateY(-120vh);opacity:0}
 }
 
 /* ===== NAV ===== */
@@ -57,13 +71,11 @@ nav{
   background:rgba(0,0,0,.22);
   z-index:100;
 }
-
 .brand{
   font-family:'Android';
   font-size:12px;
   letter-spacing:3px;
 }
-
 nav a{
   margin-left:32px;
   font-size:11px;
@@ -75,7 +87,7 @@ nav a{
 nav a i{margin-right:6px;font-size:11px}
 nav a:hover{opacity:1}
 
-/* ===== HERO (JARAK DIPERBAIKI) ===== */
+/* ===== HERO ===== */
 .hero{
   min-height:100vh;
   padding:120px 48px 60px;
@@ -92,7 +104,7 @@ nav a:hover{opacity:1}
   opacity:.85;
 }
 
-/* ===== SECTION (JARAK DIPERBAIKI) ===== */
+/* ===== SECTION ===== */
 section{padding:100px 48px}
 section h2{
   font-family:'Noir';
@@ -100,31 +112,49 @@ section h2{
   margin-bottom:48px;
 }
 
-/* ===== PROFILE (DIPERBESAR) ===== */
+/* ===== PROFILE ===== */
 .profile-mini{
   display:flex;
   justify-content:center;
-  margin-bottom:24px;
+  margin-bottom:20px;
 }
-
 .profile-frame{
   width:220px;
   height:220px;
   padding:8px;
   border-radius:50%;
-  background:linear-gradient(
-    135deg,
-    rgba(255,255,255,.7),
-    rgba(255,255,255,.15)
-  );
+  background:linear-gradient(135deg,rgba(255,255,255,.7),rgba(255,255,255,.15));
   box-shadow:0 18px 50px rgba(0,0,0,.45);
 }
-
 .profile-frame img{
   width:100%;
   height:100%;
   border-radius:50%;
   object-fit:cover;
+}
+
+/* icon aplikasi */
+.social-icons{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin-bottom:40px;
+}
+.social-icons a{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.18);
+  backdrop-filter:blur(10px);
+  color:#fff;
+  transition:.3s;
+}
+.social-icons a:hover{
+  background:rgba(255,255,255,.35);
+  transform:translateY(-4px);
 }
 
 /* ===== CLIENT ===== */
@@ -173,10 +203,7 @@ section h2{
   backdrop-filter:blur(14px);
   border:1px solid rgba(255,255,255,.12);
 }
-.box p{
-  margin-top:10px;
-  line-height:1.6;
-}
+.box p{margin-top:10px;line-height:1.6}
 
 /* ===== FOOTER ===== */
 footer{
@@ -213,7 +240,7 @@ footer{
 
 <body>
 
-<div class="bg-animation">
+<div class="bg-animation" id="bg">
   <div class="bar h1"></div>
   <div class="bar h2"></div>
   <div class="bar v1"></div>
@@ -236,19 +263,23 @@ footer{
 
 <section class="hero">
   <h1>Aiman<br>Sports Graphic Designer</h1>
-  <p>
-    Matchday graphics, football visuals, and modern
-    social media content for players and academies worldwide.
-  </p>
+  <p>Matchday graphics, football visuals, and modern social media content for players and academies worldwide.</p>
+</section>
 
+<!-- PROFILE DIPINDAHKAN KE ATAS CLIENT -->
+<section>
   <div class="profile-mini">
     <div class="profile-frame">
       <img src="https://i.ibb.co.com/fVBkxxBy/DSC07295-1-1.jpg">
     </div>
   </div>
-</section>
 
-<section>
+  <div class="social-icons">
+    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="#"><i class="fa-solid fa-envelope"></i></a>
+  </div>
+
   <h2>CLIENT</h2>
   <div class="trust-grid">
     <img src="https://i.ibb.co.com/fVBkxxBy/DSC07295-1-1.jpg">
@@ -280,22 +311,11 @@ footer{
   <div class="price">
     <div class="box">
       <h3>Design Feed</h3>
-      <p>
-        $5 / proyek<br>
-        1 Design Feed<br>
-        Format JPG/PNG<br>
-        Revisi 1<br>
-        Waktu 1–2 hari
-      </p>
+      <p>$5 / proyek<br>1 Design Feed<br>Format JPG/PNG<br>Revisi 1<br>Waktu 1–2 hari</p>
     </div>
     <div class="box">
       <h3>Matchday</h3>
-      <p>
-        1 Design Matchday<br>
-        Format JPG/PNG<br>
-        Revisi 2x<br>
-        Waktu 2–3 hari
-      </p>
+      <p>1 Design Matchday<br>Format JPG/PNG<br>Revisi 2x<br>Waktu 2–3 hari</p>
     </div>
   </div>
 </section>
@@ -316,6 +336,19 @@ function fadeInMusic(){
 }
 window.addEventListener('click',fadeInMusic,{once:true});
 function toggleMusic(){music.paused?fadeInMusic():music.pause()}
+
+/* partikel bertambah saat disentuh */
+const bg=document.getElementById('bg');
+window.addEventListener('click',e=>{
+  for(let i=0;i<6;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    p.style.left=e.clientX+'px';
+    p.style.top=e.clientY+'px';
+    bg.appendChild(p);
+    setTimeout(()=>p.remove(),12000);
+  }
+});
 </script>
 
 </body>
