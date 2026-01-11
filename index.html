@@ -21,6 +21,33 @@ body{
   overflow-x:hidden;
 }
 
+/* ===== ANIMASI WELCOME ===== */
+#welcome-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0a0a0b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s ease, visibility 1s;
+}
+.welcome-content {
+  text-align: center;
+  animation: pulseWelcome 2s infinite ease-in-out;
+}
+.welcome-content h1 {
+  font-family: 'Android';
+  color: #00ffcc;
+  letter-spacing: 5px;
+  font-size: 24px;
+}
+@keyframes pulseWelcome {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+.fade-out { opacity: 0; visibility: hidden; }
+
 /* ===== LUXURY ANIMATED BACKGROUND ===== */
 .bg-animation{position:fixed;inset:0;z-index:-1;overflow:hidden;background:#0a0a0b;}
 .bg-animation::before, .bg-animation::after {
@@ -50,22 +77,6 @@ body{
 .bar.h2{width:130%;height:100px;top:60%;animation:moveH 52s ease-in-out infinite reverse}
 
 @keyframes moveH{ 0%{transform:translateX(-40%)} 50%{transform:translateX(0%)} 100%{transform:translateX(40%)} }
-
-.particle{
-  position:absolute;
-  pointer-events:none;
-  border-radius:50%;
-  z-index: 999;
-  animation:explode 1s ease-out forwards, floatUp 8s linear forwards 1s;
-}
-
-@keyframes explode {
-  0% { transform: translate(0,0) scale(1); opacity: 1; }
-  100% { transform: translate(var(--x), var(--y)) scale(0.5); opacity: 0.8; }
-}
-@keyframes floatUp {
-  to { transform: translate(var(--x), -120vh); opacity: 0; }
-}
 
 /* ===== NAV ===== */
 nav{
@@ -113,9 +124,9 @@ nav a:hover{opacity:1;color:#00ffcc; text-shadow: 0 0 8px #00ffcc;}
   text-align: center;
   padding: 40px 48px;
 }
-.tech-stack h3 { font-family: 'Noir'; font-size: 14px; opacity: 0.5; margin-bottom: 20px; letter-spacing: 2px; }
 .tech-icons { display: flex; justify-content: center; gap: 30px; font-size: 35px; color: #00ffcc; opacity: 0.8; }
-.tech-icons i:hover { transform: scale(1.2); color: #fff; transition: 0.3s; }
+.tech-icons i { transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.tech-icons i:hover { transform: scale(1.3) rotate(10deg); color: #fff; filter: drop-shadow(0 0 10px #00ffcc); }
 
 /* ===== PROFILE ===== */
 .profile-container{margin-top:20px;position:relative;z-index:10}
@@ -129,15 +140,9 @@ nav a:hover{opacity:1;color:#00ffcc; text-shadow: 0 0 8px #00ffcc;}
 @keyframes pulsePulse { 0%, 100% { box-shadow: 0 0 20px rgba(0,255,204,0.2); } 50% { box-shadow: 0 0 40px rgba(0,255,204,0.5); } }
 .profile-frame img{width:100%;height:100%;border-radius:50%;object-fit:cover}
 
-.social-icons{display:flex;justify-content:center;gap:15px;margin-bottom:30px}
-.social-icons a{
-  width:45px;height:45px;border-radius:12px;display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.1);backdrop-filter:blur(10px);color:#fff;text-decoration:none;transition:.3s;
-}
-.social-icons a:hover{background:#00ffcc;color:#000;transform:translateY(-5px);}
-
 /* ===== SECTION GENERAL ===== */
-section{padding:50px 48px}
+section{padding:50px 48px; opacity: 0; transform: translateY(20px); transition: 1s ease;}
+section.reveal { opacity: 1; transform: translateY(0); }
 section h2{font-family:'Noir';font-size:28px;margin-bottom:30px;display:flex;align-items:center;gap:15px}
 section h2 i{color:#00ffcc;font-size:22px}
 
@@ -152,57 +157,31 @@ section h2 i{color:#00ffcc;font-size:22px}
   border: 1px solid rgba(255,255,255,0.08);
   padding: 30px;
   border-radius: 20px;
-  transition: 0.3s;
+  transition: 0.4s ease;
   text-align: center;
 }
-.shop-card:hover { border-color: #00ffcc; transform: translateY(-5px); background: rgba(0,255,204,0.02); }
-.shop-card i { font-size: 40px; color: #00ffcc; margin-bottom: 20px; display: block; }
-.shop-card h3 { font-family: 'Noir'; font-size: 18px; margin-bottom: 10px; }
-.shop-card p { font-size: 13px; opacity: 0.6; margin-bottom: 20px; height: 40px; }
-.btn-cek {
-  display: inline-block;
-  padding: 10px 25px;
-  border: 1px solid #00ffcc;
-  color: #00ffcc;
-  text-decoration: none;
-  border-radius: 8px;
-  font-size: 12px;
-  transition: 0.3s;
-}
-.btn-cek:hover { background: #00ffcc; color: #000; }
+.shop-card:hover { border-color: #00ffcc; transform: translateY(-10px); background: rgba(0,255,204,0.05); }
 
-/* ===== CLIENT ===== */
-.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:15px}
-.trust-grid img{width:100%;height:110px;object-fit:cover;border-radius:15px;opacity:.4; transition:.4s; filter: grayscale(1);}
-.trust-grid img:hover{opacity:1; transform:scale(1.05); filter: grayscale(0);}
-
-/* ===== KARYA ===== */
+/* ===== KARYA / WORK ===== */
 .karya-wrapper{overflow:hidden;}
 .karya-track{display:flex;gap:25px;width:max-content;animation:scroll 25s linear infinite}
-.karya-track:hover { animation-play-state: paused; }
-.karya-track img{width:240px;height:380px;border-radius:20px;object-fit:cover;box-shadow:0 15px 40px rgba(0,0,0,0.4);}
+.karya-track img{width:240px;height:380px;border-radius:20px;object-fit:cover;transition: 0.5s;}
+.karya-track img:hover { transform: scale(1.05); filter: brightness(1.1); }
 @keyframes scroll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-/* ===== PRICE (KEMBALI KE SEMULA) ===== */
+/* ===== PRICE ===== */
 .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
 .box{
   padding:45px;border-radius:30px;background:rgba(255,255,255,.04);
   backdrop-filter:blur(15px);border: 1px solid rgba(255,255,255,.08);transition:.4s ease;
-  position: relative; overflow: hidden;
 }
-.box:hover{
-  border-color:#00ffcc; background:rgba(0,255,204,.05); 
-  transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
+.box:hover{border-color:#00ffcc; transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.3);}
 .box h3{display:flex;align-items:center;gap:12px;margin-bottom:25px;color:#00ffcc;font-family:'Noir'; font-size: 22px;}
 .box p{line-height:2.2;font-size:15px;opacity:.8}
 .box p i{color:#00ffcc;margin-right:12px; width: 20px;}
 
 /* ===== FOOTER ===== */
-footer{
-  padding:50px 48px;border-top:1px solid rgba(255,255,255,.05);
-  display:flex;justify-content:space-between;align-items:center;font-size:13px;
-}
+footer{padding:50px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center;font-size:13px;}
 
 .music-btn{
   position:fixed;bottom:25px;right:25px;width:45px;height:45px;border-radius:50%;
@@ -213,15 +192,20 @@ footer{
 @media(max-width:768px){
   nav a{display:none}
   .hero{padding:100px 25px 20px; text-align: center;}
-  .stats-container { margin: 10px 25px; flex-wrap: wrap; gap: 20px; }
-  .stat-box { flex: 1 1 40%; }
+  .stats-container { margin: 10px 25px; }
   section{padding:40px 25px}
-  footer{flex-direction:column;gap:15px;}
 }
 </style>
 </head>
 
 <body>
+
+<div id="welcome-screen">
+  <div class="welcome-content">
+    <h1>AMD DESIGN</h1>
+    <p style="font-size: 10px; letter-spacing: 2px; margin-top: 10px; opacity: 0.6;">LOADING EXPERIENCE...</p>
+  </div>
+</div>
 
 <div class="bg-animation" id="bg">
   <div class="bar h1"></div>
@@ -243,28 +227,18 @@ footer{
   </div>
 </nav>
 
-<section class="hero">
+<section class="hero reveal">
   <h1>Aiman<br><span style="color:#00ffcc">Sports Graphic</span><br>Designer</h1>
   <p>Elevating matchday visuals and social media content for athletes and football academies worldwide.</p>
 </section>
 
 <div class="stats-container">
-  <div class="stat-box">
-    <h2>50+</h2>
-    <p>Happy Clients</p>
-  </div>
-  <div class="stat-box">
-    <h2>3+</h2>
-    <p>Years Experience</p>
-  </div>
-  <div class="stat-box">
-    <h2>100+</h2>
-    <p>Designs Finished</p>
-  </div>
+  <div class="stat-box"><h2>50+</h2><p>Happy Clients</p></div>
+  <div class="stat-box"><h2>3+</h2><p>Years Experience</p></div>
+  <div class="stat-box"><h2>100+</h2><p>Designs Finished</p></div>
 </div>
 
 <div class="tech-stack">
-  <h3>TOOLS & TECH</h3>
   <div class="tech-icons">
     <i class="fa-solid fa-paintbrush"></i>
     <i class="fa-solid fa-bezier-curve"></i>
@@ -275,14 +249,7 @@ footer{
 
 <div class="profile-container">
   <div class="profile-mini">
-    <div class="profile-frame">
-      <img src="https://i.ibb.co.com/tTcHyZfH/IMG-20260110-WA0713-1.jpg">
-    </div>
-  </div>
-  <div class="social-icons">
-    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-    <a href="#"><i class="fa-solid fa-envelope"></i></a>
+    <div class="profile-frame"><img src="https://i.ibb.co.com/tTcHyZfH/IMG-20260110-WA0713-1.jpg"></div>
   </div>
 </div>
 
@@ -290,38 +257,20 @@ footer{
   <h2><i class="fa-solid fa-palette"></i> Designer Services & Solutions</h2>
   <div class="shop-grid">
     <div class="shop-card">
-      <i class="fa-solid fa-futbol"></i>
+      <i class="fa-solid fa-futbol" style="font-size: 40px; color:#00ffcc; margin-bottom:20px;"></i>
       <h3>Sports Branding</h3>
       <p>Visual identitas klub, logo sports, dan jersey design eksklusif.</p>
-      <a href="#" class="btn-cek">Konsultasi</a>
     </div>
     <div class="shop-card">
-      <i class="fa-solid fa-rectangle-ad"></i>
+      <i class="fa-solid fa-rectangle-ad" style="font-size: 40px; color:#00ffcc; margin-bottom:20px;"></i>
       <h3>Social Media Kit</h3>
       <p>Banner, Poster Matchday, dan konten harian Instagram/Twitter.</p>
-      <a href="#" class="btn-cek">Lihat Paket</a>
     </div>
-    <div class="shop-card">
-      <i class="fa-solid fa-file-pdf"></i>
-      <h3>Digital Portfolio</h3>
-      <p>Jasa pembuatan layout portofolio & CV kreatif untuk atlet.</p>
-      <a href="#" class="btn-cek">Order Now</a>
-    </div>
-  </div>
-</section>
-
-<section id="client">
-  <h2><i class="fa-solid fa-handshake"></i> CLIENT</h2>
-  <div class="trust-grid">
-    <img src="https://i.ibb.co.com/bMH1CS1j/IMG-20260110-WA0552.jpg">
-    <img src="https://i.ibb.co.com/qYjV59ZN/SAVE-20260110-070253.jpg">
-    <img src="https://i.ibb.co.com/Y7QPTmHn/SAVE-20260110-064947.jpg">
-    <img src="https://i.ibb.co.com/9Hh8N387/IMG-20260110-070248-272.jpg">
   </div>
 </section>
 
 <section id="work">
-  <h2><i class="fa-solid fa-star"></i> KARYA</h2>
+  <h2><i class="fa-solid fa-star"></i> WORK</h2>
   <div class="karya-wrapper">
     <div class="karya-track">
       <img src="https://i.ibb.co.com/zjp0qd7/1001968417-1000.jpg">
@@ -337,11 +286,11 @@ footer{
   <h2><i class="fa-solid fa-tags"></i> PRICE</h2>
   <div class="price-grid">
     <div class="box">
-      <h3><i class="fa-solid fa-layer-group"></i> Design Feed</h3>
+      <h3><i class="fa-solid fa-layer-group"></i> Feed Design</h3>
       <p>
-        <i class="fa-solid fa-circle-check"></i> $5 / Proyek<br>
-        <i class="fa-solid fa-circle-check"></i> 1 Design Feed (High Res)<br>
-        <i class="fa-solid fa-circle-check"></i> Format JPG/PNG<br>
+        <i class="fa-solid fa-circle-check"></i> Add 5$ / Proyekk<br>
+        <i class="fa-solid fa-circle-check"></i> Feed Design 3$ / Proyek<br>
+        <i class="fa-solid fa-circle-check"></i> High Resolution JPG/PNG<br>
         <i class="fa-solid fa-circle-check"></i> 1x Revisi Ringan<br>
         <i class="fa-solid fa-circle-check"></i> Pengerjaan 1–2 Hari
       </p>
@@ -351,7 +300,7 @@ footer{
       <p>
         <i class="fa-solid fa-circle-check"></i> Premium Visual Layout<br>
         <i class="fa-solid fa-circle-check"></i> High Definition Quality<br>
-        <i class="fa-solid fa-circle-check"></i> 2x Revisi Desain<br>
+        <i class="fa-solid fa-circle-check"></i> 5x Revisi Desain<br>
         <i class="fa-solid fa-circle-check"></i> Pengerjaan 2–3 Hari
       </p>
     </div>
@@ -361,12 +310,30 @@ footer{
 <footer id="contact">
   <div>© 2026 AMD Design</div>
   <div class="footer-contact">
-    <a href="#">Instagram</a>
-    <a href="#">WhatsApp</a>
+    <a href="#" style="color:#fff; text-decoration:none; margin-left:20px;">Instagram</a>
+    <a href="#" style="color:#fff; text-decoration:none; margin-left:20px;">WhatsApp</a>
   </div>
 </footer>
 
 <script>
+// Welcome Screen Logic
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('welcome-screen').classList.add('fade-out');
+  }, 2000);
+});
+
+// Scroll Reveal Logic
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('reveal');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('section').forEach(section => observer.observe(section));
+
 const music=document.getElementById('bgMusic');
 function toggleMusic(){music.paused?music.play():music.pause()}
 
