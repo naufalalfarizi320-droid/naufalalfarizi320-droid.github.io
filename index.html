@@ -48,6 +48,17 @@ body{
 }
 .fade-out { opacity: 0; visibility: hidden; }
 
+/* ===== SCROLL REVEAL ANIMATION ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ===== LUXURY ANIMATED BACKGROUND ===== */
 .bg-animation{position:fixed;inset:0;z-index:-1;overflow:hidden;background:#0a0a0b;}
 .bg-animation::before, .bg-animation::after {
@@ -227,6 +238,16 @@ footer{
   display:flex;justify-content:space-between;align-items:center;font-size:13px;
 }
 
+footer a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+footer a:hover {
+  color: #00ffcc;
+}
+
 .music-btn{
   position:fixed;bottom:25px;right:25px;width:45px;height:45px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
@@ -273,12 +294,12 @@ footer{
   </div>
 </nav>
 
-<section class="hero">
+<section class="hero reveal">
   <h1>Aiman<br><span style="color:#00ffcc">Sports Graphic</span><br>Designer</h1>
   <p>Elevating matchday visuals and social media content for athletes and football academies worldwide.</p>
 </section>
 
-<div class="stats-container">
+<div class="stats-container reveal">
   <div class="stat-box">
     <h2>50+</h2>
     <p>Happy Clients</p>
@@ -293,7 +314,7 @@ footer{
   </div>
 </div>
 
-<div class="tech-stack">
+<div class="tech-stack reveal">
   <h3>TOOLS & TECH</h3>
   <div class="tech-icons">
     <i class="fa-solid fa-paintbrush"></i>
@@ -303,44 +324,44 @@ footer{
   </div>
 </div>
 
-<div class="profile-container">
+<div class="profile-container reveal">
   <div class="profile-mini">
     <div class="profile-frame">
       <img src="https://i.ibb.co.com/tTcHyZfH/IMG-20260110-WA0713-1.jpg">
     </div>
   </div>
   <div class="social-icons">
-    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-    <a href="#"><i class="fa-solid fa-envelope"></i></a>
+    <a href="https://instagram.com/amddesignn_" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://wa.me/6281932787003" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="mailto:contact@amddesign.com"><i class="fa-solid fa-envelope"></i></a>
   </div>
 </div>
 
-<section id="shop">
+<section id="shop" class="reveal">
   <h2><i class="fa-solid fa-palette"></i> Designer Services & Solutions</h2>
   <div class="shop-grid">
     <div class="shop-card">
       <i class="fa-solid fa-futbol"></i>
       <h3>Sports Branding</h3>
       <p>Visual identitas klub, logo sports, dan jersey design eksklusif.</p>
-      <a href="#" class="btn-cek">Konsultasi</a>
+      <a href="https://wa.me/6281932787003" class="btn-cek" target="_blank">Konsultasi</a>
     </div>
     <div class="shop-card">
       <i class="fa-solid fa-rectangle-ad"></i>
       <h3>Social Media Kit</h3>
       <p>Banner, Poster Matchday, dan konten harian Instagram/Twitter.</p>
-      <a href="#" class="btn-cek">Lihat Paket</a>
+      <a href="https://wa.me/6281932787003" class="btn-cek" target="_blank">Lihat Paket</a>
     </div>
     <div class="shop-card">
       <i class="fa-solid fa-file-pdf"></i>
       <h3>Digital Portfolio</h3>
       <p>Jasa pembuatan layout portofolio & CV kreatif untuk atlet.</p>
-      <a href="#" class="btn-cek">Order Now</a>
+      <a href="https://wa.me/6281932787003" class="btn-cek" target="_blank">Order Now</a>
     </div>
   </div>
 </section>
 
-<section id="client">
+<section id="client" class="reveal">
   <h2><i class="fa-solid fa-handshake"></i> CLIENT</h2>
   <div class="trust-grid">
     <img src="https://i.ibb.co.com/bMH1CS1j/IMG-20260110-WA0552.jpg">
@@ -350,7 +371,7 @@ footer{
   </div>
 </section>
 
-<section id="work">
+<section id="work" class="reveal">
   <h2><i class="fa-solid fa-star"></i> KARYA</h2>
   <div class="karya-wrapper">
     <div class="karya-track">
@@ -363,26 +384,27 @@ footer{
   </div>
 </section>
 
-<section id="price">
+<section id="price" class="reveal">
   <h2><i class="fa-solid fa-tags"></i> PRICE</h2>
   <div class="price-grid">
     <div class="box">
       <h3><i class="fa-solid fa-layer-group"></i> Design Feed</h3>
       <p>
-        <i class="fa-solid fa-circle-check"></i> $5 / Proyek<br>
+         <i class="fa-solid fa-circle-check"></i> Feed Design 3$ / Proyek<br>
         <i class="fa-solid fa-circle-check"></i> 1 Design Feed (High Res)<br>
         <i class="fa-solid fa-circle-check"></i> Format JPG/PNG<br>
         <i class="fa-solid fa-circle-check"></i> 1x Revisi Ringan<br>
-        <i class="fa-solid fa-circle-check"></i> Pengerjaan 1–2 Hari
+        <i class="fa-solid fa-circle-check"></i> Pengerjaan 1–2 Hours
       </p>
     </div>
     <div class="box">
       <h3><i class="fa-solid fa-trophy"></i> Matchday</h3>
       <p>
+        <i class="fa-solid fa-circle-check"></i> $5 / Proyek<br>
         <i class="fa-solid fa-circle-check"></i> Premium Visual Layout<br>
         <i class="fa-solid fa-circle-check"></i> High Definition Quality<br>
-        <i class="fa-solid fa-circle-check"></i> 2x Revisi Desain<br>
-        <i class="fa-solid fa-circle-check"></i> Pengerjaan 2–3 Hari
+        <i class="fa-solid fa-circle-check"></i> 5x Revisi Desain<br>
+        <i class="fa-solid fa-circle-check"></i> Pengerjaan 1-2 Hours
       </p>
     </div>
   </div>
@@ -391,8 +413,8 @@ footer{
 <footer id="contact">
   <div>© 2026 AMD Design</div>
   <div class="footer-contact">
-    <a href="#">Instagram</a>
-    <a href="#">WhatsApp</a>
+    <a href="https://instagram.com/amddesignn_" target="_blank">Instagram @amddesignn_</a> | 
+    <a href="https://wa.me/6281932787003" target="_blank">WhatsApp +62 81932787003</a>
   </div>
 </footer>
 
@@ -401,8 +423,24 @@ footer{
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('welcome-screen').classList.add('fade-out');
+    reveal(); // Jalankan sekali untuk elemen di bagian atas
   }, 2000);
 });
+
+// Scroll Reveal Logic (Efek muncul saat scroll)
+function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 100; // Jarak muncul (pixel)
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    }
+  }
+}
+
+window.addEventListener("scroll", reveal);
 
 const music=document.getElementById('bgMusic');
 function toggleMusic(){music.paused?music.play():music.pause()}
