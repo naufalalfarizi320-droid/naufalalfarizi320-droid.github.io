@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AMD Design | Sports Graphic</title>
+<title>AMD Design | Premium Sports Graphic</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
@@ -11,119 +11,180 @@
 @font-face{font-family:'Noir';src:url('fonts/noir.ttf')}
 @font-face{font-family:'Android';src:url('fonts/android.ttf')}
 
+/* Global Reset */
 *{margin:0;padding:0;box-sizing:border-box}
+html { scroll-behavior: smooth; }
 
 body{
   font-family:'Gendy',sans-serif;
   color:#fff;
-  background:linear-gradient(135deg,#1a1a1c,#004146);
+  background: #0a0a0b;
   overflow-x:hidden;
+  line-height: 1.6;
 }
 
-/* ===== BACKGROUND & PARTICLE ===== */
-.bg-animation{position:fixed;inset:0;z-index:-1;overflow:hidden;background:#0f0f0f;}
-.bar{position:absolute;background:rgba(255,255,255,0.08);border-radius:40px;filter:blur(6px)}
-.bar.h1{width:130%;height:160px;top:18%;animation:moveH 38s ease-in-out infinite}
-.bar.h2{width:130%;height:100px;top:60%;animation:moveH 52s ease-in-out infinite reverse}
+/* ===== LUXURY BACKGROUND & ANIMATION ===== */
+.bg-animation{
+  position:fixed;inset:0;z-index:-1;
+  background: radial-gradient(circle at 50% 50%, #002a2d 0%, #0a0a0b 100%);
+  overflow:hidden;
+}
+
+/* Animasi cahaya menyapu di latar belakang */
+.bg-animation::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%; left: -50%;
+  background: conic-gradient(from 0deg at 50% 50%, transparent 0%, rgba(0,255,204,0.03) 25%, transparent 50%);
+  animation: rotateBg 15s linear infinite;
+}
+
+@keyframes rotateBg {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.bar{position:absolute;background:rgba(0,255,204,0.07);border-radius:50%;filter:blur(60px)}
+.bar.h1{width:400px;height:400px;top:10%;left:-100px;animation:float 20s ease-in-out infinite}
+.bar.h2{width:300px;height:300px;bottom:10%;right:-50px;animation:float 25s ease-in-out infinite reverse}
+
+@keyframes float {
+  0%, 100% { transform: translate(0,0); }
+  50% { transform: translate(50px, 100px); }
+}
 
 .particle{
   position:absolute;
   pointer-events:none;
   border-radius:50%;
   z-index: 999;
-  animation:explode 1s ease-out forwards, floatUp 8s linear forwards 1s;
+  animation:explode 0.8s ease-out forwards, floatUp 6s linear forwards 0.8s;
 }
 
 @keyframes explode {
   0% { transform: translate(0,0) scale(1); opacity: 1; }
-  100% { transform: translate(var(--x), var(--y)) scale(0.5); opacity: 0.8; }
+  100% { transform: translate(var(--x), var(--y)) scale(0.3); opacity: 0.6; }
 }
 @keyframes floatUp {
-  to { transform: translate(var(--x), -120vh); opacity: 0; }
+  to { transform: translateY(-120vh); opacity: 0; }
 }
 
-@keyframes moveH{ 0%{transform:translateX(-40%)} 50%{transform:translateX(0%)} 100%{transform:translateX(40%)} }
-
-/* ===== NAV ===== */
+/* ===== NAVIGATION ===== */
 nav{
-  position:fixed;top:0;width:100%;padding:15px 40px;
+  position:fixed;top:0;width:100%;padding:20px 60px;
   display:flex;justify-content:space-between;align-items:center;
-  backdrop-filter:blur(18px);background:rgba(0,0,0,.3);z-index:1000;
+  backdrop-filter:blur(20px);background:rgba(0,0,0,.5);z-index:1000;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
-.brand{font-family:'Android';font-size:12px;letter-spacing:3px;color:#00ffcc}
-nav a{margin-left:25px;font-size:11px;letter-spacing:2px;text-decoration:none;color:#fff;opacity:.65;transition:.3s}
-nav a:hover{opacity:1;color:#00ffcc}
+.brand{font-family:'Android';font-size:14px;letter-spacing:4px;color:#00ffcc;text-shadow: 0 0 10px rgba(0,255,204,0.4)}
+nav a{margin-left:30px;font-size:11px;letter-spacing:2px;text-decoration:none;color:#fff;opacity:.6;transition:.4s;text-transform: uppercase;}
+nav a:hover{opacity:1;color:#00ffcc;text-shadow: 0 0 8px #00ffcc;}
 
-/* ===== HERO ===== */
-.hero{min-height:65vh;padding:120px 48px 20px;}
-.hero h1{font-family:'Noir';font-size:clamp(40px, 8vw, 72px);line-height:1.05;}
-.hero p{margin-top:20px;max-width:520px;font-size:17px;opacity:.85;border-left:2px solid #00ffcc;padding-left:15px}
+/* ===== HERO SECTION ===== */
+.hero{
+  min-height:90vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 120px 60px 40px;
+  max-width: 1400px; margin: 0 auto;
+}
+.hero h1{font-family:'Noir';font-size:clamp(45px, 8.5vw, 85px);line-height:1.1; letter-spacing: -2px;}
+.hero p{
+  margin-top:30px;max-width:550px;font-size:18px;opacity:.7;
+  border-left:3px solid #00ffcc;padding-left:25px;
+}
 
-/* ===== PROFILE CENTERED ===== */
-.profile-container{margin-top:-60px;position:relative;z-index:10}
-.profile-mini{display:flex;justify-content:center;margin-bottom:15px}
+/* ===== PROFILE SECTION ===== */
+.profile-container{margin-top:-80px;position:relative;z-index:10; text-align: center;}
+.profile-mini{display:flex;justify-content:center;margin-bottom:20px}
 .profile-frame{
-  width:180px;height:180px;padding:6px;border-radius:50%;
-  background:linear-gradient(135deg,#00ffcc,rgba(255,255,255,0.2));
-  box-shadow:0 15px 40px rgba(0,0,0,0.5);
+  width:190px;height:190px;padding:8px;border-radius:50%;
+  background: linear-gradient(135deg,#00ffcc, #004146);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.profile-frame img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.profile-frame:hover { transform: scale(1.08) rotate(3deg); }
+.profile-frame img{width:100%;height:100%;border-radius:50%;object-fit:cover; border: 4px solid #0a0a0b;}
 
-.social-icons{display:flex;justify-content:center;gap:15px;margin-bottom:30px}
+.social-icons{display:flex;justify-content:center;gap:15px;margin-bottom:50px}
 .social-icons a{
-  width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.1);backdrop-filter:blur(10px);color:#fff;text-decoration:none;transition:.3s;font-size:18px;
+  width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.05);backdrop-filter:blur(10px);color:#fff;text-decoration:none;
+  transition:.4s;font-size:18px; border: 1px solid rgba(255,255,255,0.1);
 }
-.social-icons a:hover{background:#00ffcc;color:#000;transform:translateY(-5px)}
+.social-icons a:hover{background:#00ffcc;color:#000;transform:translateY(-8px); border-color:#00ffcc;}
 
-/* ===== SECTION ===== */
-section{padding:50px 48px}
-section h2{font-family:'Noir';font-size:32px;margin-bottom:30px;display:flex;align-items:center;gap:15px}
-section h2 i{color:#00ffcc;font-size:24px}
+/* ===== SECTION STYLING ===== */
+section{padding:100px 60px; max-width: 1400px; margin: 0 auto;}
+section h2{
+  font-family:'Noir';font-size:32px;margin-bottom:50px;display:flex;align-items:center;gap:20px;
+  text-transform: uppercase; letter-spacing: 3px;
+}
+section h2 i{color:#00ffcc; filter: drop-shadow(0 0 5px #00ffcc);}
+section h2::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(0,255,204,0.3), transparent); }
 
-/* ===== CLIENT ===== */
-.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:15px}
-.trust-grid img{width:100%;height:110px;object-fit:cover;border-radius:15px;opacity:.7;transition:.3s}
-.trust-grid img:hover{opacity:1;transform:scale(1.05)}
+/* ===== CLIENT LOGOS ===== */
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:20px}
+.trust-grid img{
+  width:100%;height:120px;object-fit:cover;border-radius:18px;
+  opacity:.4; transition:.5s; filter: grayscale(100%); border: 1px solid transparent;
+}
+.trust-grid img:hover{opacity:1; filter: grayscale(0%); transform:scale(1.05); border-color: rgba(0,255,204,0.3); background: rgba(255,255,255,0.05);}
 
-/* ===== KARYA ===== */
-.karya-wrapper{overflow:hidden}
-.karya-track{display:flex;gap:25px;width:max-content;animation:scroll 25s linear infinite}
-.karya-track img{width:240px;height:380px;border-radius:20px;object-fit:cover;box-shadow:0 15px 40px rgba(0,0,0,0.4)}
+/* ===== KARYA SLIDER ===== */
+.karya-wrapper{overflow:hidden; padding: 20px 0;}
+.karya-track{display:flex;gap:25px;width:max-content;animation:scroll 40s linear infinite}
+.karya-track:hover { animation-play-state: paused; }
+.karya-track img{
+  width:260px;height:400px;border-radius:24px;object-fit:cover;
+  box-shadow:0 15px 40px rgba(0,0,0,0.5); transition: 0.4s ease;
+}
+.karya-track img:hover { transform: translateY(-15px) scale(1.02); }
 @keyframes scroll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-/* ===== PRICE ===== */
-.price{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
+/* ===== PRICE BOXES ===== */
+.price{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
 .box{
-  padding:30px;border-radius:25px;background:rgba(255,255,255,.05);
-  backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.1);transition:.3s;
+  padding:45px;border-radius:30px;background:rgba(255,255,255,.03);
+  backdrop-filter:blur(15px);border: 1px solid rgba(255,255,255,.07);transition:.4s ease;
+  position: relative; overflow: hidden;
 }
-.box:hover{border-color:#00ffcc;background:rgba(255,255,255,.08)}
-.box h3{display:flex;align-items:center;gap:10px;margin-bottom:15px;color:#00ffcc;font-family:'Noir'}
-.box p{line-height:1.8;font-size:14px;opacity:.9}
-.box p i{color:#00ffcc;margin-right:10px;width:15px;text-align:center}
+.box:hover{
+  border-color:#00ffcc; background:rgba(0,255,204,.05); 
+  transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.box h3{display:flex;align-items:center;gap:12px;margin-bottom:25px;color:#00ffcc;font-family:'Noir'; font-size: 22px;}
+.box p{line-height:2.2;font-size:15px;opacity:.8}
+.box p i{color:#00ffcc;margin-right:12px; width: 20px;}
 
 /* ===== FOOTER ===== */
 footer{
-  padding:50px 48px;border-top:1px solid rgba(255,255,255,.1);
-  display:flex;justify-content:space-between;align-items:center;font-size:13px;
+  padding:60px; border-top:1px solid rgba(255,255,255,.05);
+  display:flex;justify-content:space-between;align-items:center;
+  max-width: 1400px; margin: 0 auto; font-size: 14px; opacity: 0.8;
 }
-.footer-contact a{text-decoration:none;color:inherit;margin-left:15px;transition:.3s}
-.footer-contact a:hover{color:#00ffcc}
-.footer-contact i{color:#00ffcc;margin-right:5px}
+.footer-contact a{text-decoration:none;color:inherit;margin-left:25px;transition:.3s;}
+.footer-contact a:hover{color:#00ffcc;}
 
+/* Floating Music Button */
 .music-btn{
-  position:fixed;bottom:25px;right:25px;width:45px;height:45px;border-radius:50%;
+  position:fixed;bottom:30px;right:30px;width:55px;height:55px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  background:rgba(0,255,204,.2);backdrop-filter:blur(10px);cursor:pointer;z-index:2000;border:1px solid #00ffcc;
+  background:rgba(0,0,0,.7);backdrop-filter:blur(10px);cursor:pointer;z-index:2000;
+  border:1px solid #00ffcc; color: #00ffcc; box-shadow: 0 0 20px rgba(0,255,204,0.2);
 }
 
+/* RESPONSIVE */
 @media(max-width:768px){
+  nav{padding: 15px 25px;}
   nav a{display:none}
-  .hero{padding:100px 25px 20px}
-  .hero h1{font-size:42px}
-  section{padding:40px 25px}
-  footer{flex-direction:column;gap:15px;text-align:center}
+  .hero{padding: 140px 25px 40px; text-align: center;}
+  .hero p { border-left: none; border-top: 2px solid #00ffcc; padding: 20px 0 0; margin: 30px auto 0; }
+  section{padding:60px 25px}
+  .profile-container { margin-top: 20px; }
+  footer{flex-direction:column;gap:20px;text-align:center}
+  .footer-contact a { margin: 0 10px; display: block; margin-top: 10px; }
 }
 </style>
 </head>
@@ -138,14 +199,15 @@ footer{
 <audio id="bgMusic" loop>
   <source src="audio/ambient.mp3" type="audio/mpeg">
 </audio>
-<div class="music-btn" onclick="toggleMusic()">♪</div>
+<div class="music-btn" onclick="toggleMusic()"><i class="fa-solid fa-music"></i></div>
 
 <nav>
   <div class="brand">AMD DESIGN</div>
   <div>
-    <a href="#work"><i class="fa-solid fa-image"></i>Work</a>
-    <a href="#price"><i class="fa-solid fa-tag"></i>Price</a>
-    <a href="#contact"><i class="fa-solid fa-envelope"></i>Contact</a>
+    <a href="#client">Clients</a>
+    <a href="#work">Karya</a>
+    <a href="#price">Price</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
@@ -163,7 +225,7 @@ footer{
 
   <div class="social-icons">
     <a href="https://www.instagram.com/amddesignn_/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-    <a href="https://wa.me/6281932787003?text=Halo%20AMD%20Design,%20saya%20tertarik%20dengan%20layanan%20grafis%20Anda" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="https://wa.me/6281932787003" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
     <a href="mailto:contact@amddesign.com"><i class="fa-solid fa-envelope"></i></a>
   </div>
 </div>
@@ -193,6 +255,7 @@ footer{
       <img src="https://i.ibb.co.com/1GBTXLTN/IMG-20260110-WA0066.jpg">
       <img src="https://i.ibb.co.com/zjp0qd7/1001968417-1000.jpg">
       <img src="https://i.ibb.co.com/HftzZ0qG/1001967590-1000.jpg">
+      <img src="https://i.ibb.co.com/svh3GTkq/1001966742-1000.jpg">
     </div>
   </div>
 </section>
@@ -203,64 +266,65 @@ footer{
     <div class="box">
       <h3><i class="fa-solid fa-layer-group"></i> Design Feed</h3>
       <p>
-        <i class="fa-solid fa-circle-check"></i> $5 / proyek<br>
+        <i class="fa-solid fa-circle-check"></i> $5 / Proyek<br>
         <i class="fa-solid fa-circle-check"></i> 1 Design Feed (High Res)<br>
         <i class="fa-solid fa-circle-check"></i> Format JPG/PNG<br>
-        <i class="fa-solid fa-circle-check"></i> Revisi 1<br>
-        <i class="fa-solid fa-circle-check"></i> Waktu 1–2 hari
+        <i class="fa-solid fa-circle-check"></i> 1x Revisi Ringan<br>
+        <i class="fa-solid fa-circle-check"></i> Pengerjaan 1–2 Hari
       </p>
     </div>
     <div class="box">
       <h3><i class="fa-solid fa-trophy"></i> Matchday</h3>
       <p>
-        <i class="fa-solid fa-circle-check"></i> 1 Design Matchday<br>
         <i class="fa-solid fa-circle-check"></i> Premium Visual Layout<br>
-        <i class="fa-solid fa-circle-check"></i> Revisi 2x<br>
-        <i class="fa-solid fa-circle-check"></i> Waktu 2–3 hari
+        <i class="fa-solid fa-circle-check"></i> High Definition Quality<br>
+        <i class="fa-solid fa-circle-check"></i> 2x Revisi Desain<br>
+        <i class="fa-solid fa-circle-check"></i> Pengerjaan 2–3 Hari
       </p>
     </div>
   </div>
 </section>
 
 <footer id="contact">
-  <div>© 2026 AMD Design</div>
+  <div>© 2026 AMD Design. All Rights Reserved.</div>
   <div class="footer-contact">
-    <a href="https://www.instagram.com/amddesignn_/" target="_blank"><i class="fa-brands fa-instagram"></i> @amddesignn_</a>
-    <a href="https://wa.me/6281932787003" target="_blank"><i class="fa-brands fa-whatsapp"></i> +62 81932787003</a>
+    <a href="https://www.instagram.com/amddesignn_/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+    <a href="https://wa.me/6281932787003" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
   </div>
 </footer>
 
 <script>
+/* Music Logic */
 const music=document.getElementById('bgMusic');
 music.volume=0;
 function fadeInMusic(){
   let v=0;music.play();
   const f=setInterval(()=>{
-    if(v<0.6){v+=0.02;music.volume=v}else clearInterval(f)
+    if(v<0.4){v+=0.02;music.volume=v}else clearInterval(f)
   },100)
 }
 window.addEventListener('click',fadeInMusic,{once:true});
 function toggleMusic(){music.paused?fadeInMusic():music.pause()}
 
-/* ANIMASI KLIK MELEDAK */
+/* Klik Meledak (Particle) Logic */
 const bg=document.getElementById('bg');
-const colors = ['#00ffcc', '#ffffff', '#ffd700', '#004146'];
+const colors = ['#00ffcc', '#ffffff', '#004146'];
 
 window.addEventListener('mousedown', e => {
-  for(let i=0; i<15; i++){
+  for(let i=0; i<12; i++){
     const p = document.createElement('div');
     p.className = 'particle';
-    const size = Math.random() * 8 + 4 + 'px';
+    const size = Math.random() * 6 + 3 + 'px';
     p.style.width = size; p.style.height = size;
     p.style.background = colors[Math.floor(Math.random() * colors.length)];
     p.style.left = e.clientX + 'px';
     p.style.top = e.clientY + 'px';
-    const x = (Math.random() - 0.5) * 350 + 'px';
-    const y = (Math.random() - 0.5) * 350 + 'px';
+    const x = (Math.random() - 0.5) * 300 + 'px';
+    const y = (Math.random() - 0.5) * 300 + 'px';
     p.style.setProperty('--x', x);
     p.style.setProperty('--y', y);
     bg.appendChild(p);
-    setTimeout(() => p.remove(), 9000);
+    setTimeout(() => p.remove(), 7000);
   }
 });
 </script>
