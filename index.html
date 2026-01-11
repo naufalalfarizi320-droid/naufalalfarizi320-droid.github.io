@@ -94,7 +94,7 @@ nav a:hover{opacity:1;color:#00ffcc; text-shadow: 0 0 8px #00ffcc;}
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== STATS SECTION (Referencing Image Style) ===== */
+/* ===== STATS SECTION ===== */
 .stats-container {
   display: flex;
   justify-content: space-around;
@@ -141,7 +141,7 @@ section{padding:50px 48px}
 section h2{font-family:'Noir';font-size:28px;margin-bottom:30px;display:flex;align-items:center;gap:15px}
 section h2 i{color:#00ffcc;font-size:22px}
 
-/* ===== DIGITAL SERVICES (SEPUTAR DESIGNER) ===== */
+/* ===== DESIGNER SERVICES ===== */
 .shop-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -183,14 +183,20 @@ section h2 i{color:#00ffcc;font-size:22px}
 .karya-track img{width:240px;height:380px;border-radius:20px;object-fit:cover;box-shadow:0 15px 40px rgba(0,0,0,0.4);}
 @keyframes scroll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-/* ===== PRICE ===== */
-.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
+/* ===== PRICE (KEMBALI KE SEMULA) ===== */
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
 .box{
-  padding:30px;border-radius:25px;background:rgba(255,255,255,.04);
-  backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.08);transition:.4s;
+  padding:45px;border-radius:30px;background:rgba(255,255,255,.04);
+  backdrop-filter:blur(15px);border: 1px solid rgba(255,255,255,.08);transition:.4s ease;
+  position: relative; overflow: hidden;
 }
-.box:hover{border-color:#00ffcc; transform: translateY(-10px);}
-.box h3{display:flex;align-items:center;gap:10px;margin-bottom:15px;color:#00ffcc;font-family:'Noir'}
+.box:hover{
+  border-color:#00ffcc; background:rgba(0,255,204,.05); 
+  transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.box h3{display:flex;align-items:center;gap:12px;margin-bottom:25px;color:#00ffcc;font-family:'Noir'; font-size: 22px;}
+.box p{line-height:2.2;font-size:15px;opacity:.8}
+.box p i{color:#00ffcc;margin-right:12px; width: 20px;}
 
 /* ===== FOOTER ===== */
 footer{
@@ -332,11 +338,22 @@ footer{
   <div class="price-grid">
     <div class="box">
       <h3><i class="fa-solid fa-layer-group"></i> Design Feed</h3>
-      <p>High Resolution, Format JPG/PNG, 1-2 hari.</p>
+      <p>
+        <i class="fa-solid fa-circle-check"></i> $5 / Proyek<br>
+        <i class="fa-solid fa-circle-check"></i> 1 Design Feed (High Res)<br>
+        <i class="fa-solid fa-circle-check"></i> Format JPG/PNG<br>
+        <i class="fa-solid fa-circle-check"></i> 1x Revisi Ringan<br>
+        <i class="fa-solid fa-circle-check"></i> Pengerjaan 1–2 Hari
+      </p>
     </div>
     <div class="box">
       <h3><i class="fa-solid fa-trophy"></i> Matchday</h3>
-      <p>Premium Visual Layout, Revisi 2x, 2-3 hari.</p>
+      <p>
+        <i class="fa-solid fa-circle-check"></i> Premium Visual Layout<br>
+        <i class="fa-solid fa-circle-check"></i> High Definition Quality<br>
+        <i class="fa-solid fa-circle-check"></i> 2x Revisi Desain<br>
+        <i class="fa-solid fa-circle-check"></i> Pengerjaan 2–3 Hari
+      </p>
     </div>
   </div>
 </section>
